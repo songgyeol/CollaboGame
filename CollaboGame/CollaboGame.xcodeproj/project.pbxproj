@@ -14,6 +14,7 @@
 		0C50D3382827A6B9001BBB18 /* OldSayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C50D3372827A6B9001BBB18 /* OldSayingViewController.swift */; };
 		0C50D33A2827A6C5001BBB18 /* PersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C50D3392827A6C5001BBB18 /* PersonViewController.swift */; };
 		0C50D33C2827A6D6001BBB18 /* SceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C50D33B2827A6D6001BBB18 /* SceneViewController.swift */; };
+		50100CB928290FE60067F6F8 /* NewSaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50100CB828290FE60067F6F8 /* NewSaying.swift */; };
 		50DA72DD2827A2FA0073E706 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DA72DC2827A2FA0073E706 /* AppDelegate.swift */; };
 		50DA72DF2827A2FA0073E706 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DA72DE2827A2FA0073E706 /* SceneDelegate.swift */; };
 		50DA72E62827A2FB0073E706 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50DA72E52827A2FB0073E706 /* Assets.xcassets */; };
@@ -28,6 +29,7 @@
 		0C50D3372827A6B9001BBB18 /* OldSayingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldSayingViewController.swift; sourceTree = "<group>"; };
 		0C50D3392827A6C5001BBB18 /* PersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonViewController.swift; sourceTree = "<group>"; };
 		0C50D33B2827A6D6001BBB18 /* SceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneViewController.swift; sourceTree = "<group>"; };
+		50100CB828290FE60067F6F8 /* NewSaying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSaying.swift; sourceTree = "<group>"; };
 		50DA72D92827A2FA0073E706 /* CollaboGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollaboGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50DA72DC2827A2FA0073E706 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50DA72DE2827A2FA0073E706 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				0C50D3312827A69C001BBB18 /* InitialLetterViewController.swift */,
 				0C50D3332827A6A8001BBB18 /* MovieViewController.swift */,
 				0C50D3352827A6B1001BBB18 /* NewSayingViewController.swift */,
+				50100CB828290FE60067F6F8 /* NewSaying.swift */,
 				0C50D3372827A6B9001BBB18 /* OldSayingViewController.swift */,
 				0C50D3392827A6C5001BBB18 /* PersonViewController.swift */,
 				0C50D33B2827A6D6001BBB18 /* SceneViewController.swift */,
@@ -161,6 +164,7 @@
 				50DA72DF2827A2FA0073E706 /* SceneDelegate.swift in Sources */,
 				0C50D3302827A641001BBB18 /* MainViewController.swift in Sources */,
 				0C50D3322827A69C001BBB18 /* InitialLetterViewController.swift in Sources */,
+				50100CB928290FE60067F6F8 /* NewSaying.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
