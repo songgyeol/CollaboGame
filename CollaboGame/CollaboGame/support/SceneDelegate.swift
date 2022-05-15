@@ -20,11 +20,31 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let rootVC = MainViewController()
         let navVC = UINavigationController(rootViewController: rootVC)
-        
+        navigationBarConfiguration(navVC)
         self.window?.rootViewController = navVC
         window?.makeKeyAndVisible()
     }
-
+    
+    private func navigationBarConfiguration(_ controller: UINavigationController) {
+        controller.navigationBar.prefersLargeTitles = true
+        controller.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        controller.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        controller.navigationBar.tintColor = .white
+        controller.navigationBar.backgroundColor = CustomColor.startBtnColor
+        
+        if #available(iOS 13.0, *) {
+            let navBarAppearance = UINavigationBarAppearance()
+            navBarAppearance.configureWithOpaqueBackground()
+            navBarAppearance.backgroundColor = CustomColor.startBtnColor
+            navBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont.Pretandard(type: .Bold, size: 35)]
+            navBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+            
+            controller.navigationBar.standardAppearance = navBarAppearance
+            controller.navigationBar.scrollEdgeAppearance = navBarAppearance
+        } else {
+            controller.edgesForExtendedLayout = []
+        }
+    }
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
