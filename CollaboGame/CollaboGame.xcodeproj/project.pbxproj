@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C26EB602830C0E40071E8B2 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C26EB5F2830C0E40071E8B2 /* CustomButton.swift */; };
+		0C26EB622830C12D0071E8B2 /* CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C26EB612830C12D0071E8B2 /* CustomColor.swift */; };
+		0C26EB6F2830C38C0071E8B2 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0C26EB682830C38C0071E8B2 /* Pretendard-Bold.otf */; };
+		0C26EB732830C3990071E8B2 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0C26EB712830C3990071E8B2 /* Pretendard-Regular.otf */; };
+		0C26EB762830C4700071E8B2 /* UIFont_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C26EB752830C4700071E8B2 /* UIFont_Extension.swift */; };
+		0C26EB782830C51C0071E8B2 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C26EB772830C51C0071E8B2 /* CustomLabel.swift */; };
 		0C50D3302827A641001BBB18 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C50D32F2827A641001BBB18 /* MainViewController.swift */; };
 		0C50D3322827A69C001BBB18 /* InitialLetterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C50D3312827A69C001BBB18 /* InitialLetterViewController.swift */; };
 		0C50D3342827A6A8001BBB18 /* MovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C50D3332827A6A8001BBB18 /* MovieViewController.swift */; };
@@ -14,6 +20,9 @@
 		0C50D3382827A6B9001BBB18 /* OldSayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C50D3372827A6B9001BBB18 /* OldSayingViewController.swift */; };
 		0C50D33A2827A6C5001BBB18 /* PersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C50D3392827A6C5001BBB18 /* PersonViewController.swift */; };
 		0C50D33C2827A6D6001BBB18 /* SceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C50D33B2827A6D6001BBB18 /* SceneViewController.swift */; };
+		0C7562F32830D1CB00620B46 /* CustomProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7562F22830D1CB00620B46 /* CustomProgressBar.swift */; };
+		0C7562F52830D83200620B46 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7562F42830D83200620B46 /* CustomCollectionViewCell.swift */; };
+		0C7562F72830DE2900620B46 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7562F62830DE2900620B46 /* Model.swift */; };
 		50DA72DD2827A2FA0073E706 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DA72DC2827A2FA0073E706 /* AppDelegate.swift */; };
 		50DA72DF2827A2FA0073E706 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DA72DE2827A2FA0073E706 /* SceneDelegate.swift */; };
 		50DA72E62827A2FB0073E706 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50DA72E52827A2FB0073E706 /* Assets.xcassets */; };
@@ -21,6 +30,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C26EB5F2830C0E40071E8B2 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		0C26EB612830C12D0071E8B2 /* CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColor.swift; sourceTree = "<group>"; };
+		0C26EB682830C38C0071E8B2 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
+		0C26EB712830C3990071E8B2 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
+		0C26EB752830C4700071E8B2 /* UIFont_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont_Extension.swift; sourceTree = "<group>"; };
+		0C26EB772830C51C0071E8B2 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		0C50D32F2827A641001BBB18 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		0C50D3312827A69C001BBB18 /* InitialLetterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialLetterViewController.swift; sourceTree = "<group>"; };
 		0C50D3332827A6A8001BBB18 /* MovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewController.swift; sourceTree = "<group>"; };
@@ -28,6 +43,9 @@
 		0C50D3372827A6B9001BBB18 /* OldSayingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldSayingViewController.swift; sourceTree = "<group>"; };
 		0C50D3392827A6C5001BBB18 /* PersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonViewController.swift; sourceTree = "<group>"; };
 		0C50D33B2827A6D6001BBB18 /* SceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneViewController.swift; sourceTree = "<group>"; };
+		0C7562F22830D1CB00620B46 /* CustomProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProgressBar.swift; sourceTree = "<group>"; };
+		0C7562F42830D83200620B46 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
+		0C7562F62830DE2900620B46 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		50DA72D92827A2FA0073E706 /* CollaboGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollaboGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50DA72DC2827A2FA0073E706 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50DA72DE2827A2FA0073E706 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -47,6 +65,62 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C7562F82830E5D600620B46 /* support */ = {
+			isa = PBXGroup;
+			children = (
+				50DA72DC2827A2FA0073E706 /* AppDelegate.swift */,
+				50DA72DE2827A2FA0073E706 /* SceneDelegate.swift */,
+				50DA72E52827A2FB0073E706 /* Assets.xcassets */,
+				0C26EB682830C38C0071E8B2 /* Pretendard-Bold.otf */,
+				0C26EB712830C3990071E8B2 /* Pretendard-Regular.otf */,
+				50DA72E72827A2FB0073E706 /* LaunchScreen.storyboard */,
+				50DA72EA2827A2FB0073E706 /* Info.plist */,
+			);
+			path = support;
+			sourceTree = "<group>";
+		};
+		0C7562F92830E5FD00620B46 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				0C50D32F2827A641001BBB18 /* MainViewController.swift */,
+				0C50D3392827A6C5001BBB18 /* PersonViewController.swift */,
+				0C50D3312827A69C001BBB18 /* InitialLetterViewController.swift */,
+				0C50D3352827A6B1001BBB18 /* NewSayingViewController.swift */,
+				0C50D3332827A6A8001BBB18 /* MovieViewController.swift */,
+				0C50D3372827A6B9001BBB18 /* OldSayingViewController.swift */,
+				0C50D33B2827A6D6001BBB18 /* SceneViewController.swift */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		0C7562FA2830E62C00620B46 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				0C26EB5F2830C0E40071E8B2 /* CustomButton.swift */,
+				0C26EB612830C12D0071E8B2 /* CustomColor.swift */,
+				0C26EB772830C51C0071E8B2 /* CustomLabel.swift */,
+				0C7562F22830D1CB00620B46 /* CustomProgressBar.swift */,
+				0C7562F42830D83200620B46 /* CustomCollectionViewCell.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		0C7562FB2830E64200620B46 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0C7562F62830DE2900620B46 /* Model.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0C7562FC2830E64900620B46 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				0C26EB752830C4700071E8B2 /* UIFont_Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		50DA72D02827A2FA0073E706 = {
 			isa = PBXGroup;
 			children = (
@@ -66,18 +140,11 @@
 		50DA72DB2827A2FA0073E706 /* CollaboGame */ = {
 			isa = PBXGroup;
 			children = (
-				50DA72DC2827A2FA0073E706 /* AppDelegate.swift */,
-				50DA72DE2827A2FA0073E706 /* SceneDelegate.swift */,
-				50DA72E52827A2FB0073E706 /* Assets.xcassets */,
-				0C50D32F2827A641001BBB18 /* MainViewController.swift */,
-				0C50D3312827A69C001BBB18 /* InitialLetterViewController.swift */,
-				0C50D3332827A6A8001BBB18 /* MovieViewController.swift */,
-				0C50D3352827A6B1001BBB18 /* NewSayingViewController.swift */,
-				0C50D3372827A6B9001BBB18 /* OldSayingViewController.swift */,
-				0C50D3392827A6C5001BBB18 /* PersonViewController.swift */,
-				0C50D33B2827A6D6001BBB18 /* SceneViewController.swift */,
-				50DA72E72827A2FB0073E706 /* LaunchScreen.storyboard */,
-				50DA72EA2827A2FB0073E706 /* Info.plist */,
+				0C7562F82830E5D600620B46 /* support */,
+				0C7562F92830E5FD00620B46 /* controller */,
+				0C7562FA2830E62C00620B46 /* view */,
+				0C7562FC2830E64900620B46 /* Extension */,
+				0C7562FB2830E64200620B46 /* Model */,
 			);
 			path = CollaboGame;
 			sourceTree = "<group>";
@@ -140,7 +207,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C26EB6F2830C38C0071E8B2 /* Pretendard-Bold.otf in Resources */,
 				50DA72E92827A2FB0073E706 /* LaunchScreen.storyboard in Resources */,
+				0C26EB732830C3990071E8B2 /* Pretendard-Regular.otf in Resources */,
 				50DA72E62827A2FB0073E706 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -153,11 +222,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C50D33C2827A6D6001BBB18 /* SceneViewController.swift in Sources */,
+				0C7562F52830D83200620B46 /* CustomCollectionViewCell.swift in Sources */,
 				50DA72DD2827A2FA0073E706 /* AppDelegate.swift in Sources */,
+				0C26EB622830C12D0071E8B2 /* CustomColor.swift in Sources */,
 				0C50D3342827A6A8001BBB18 /* MovieViewController.swift in Sources */,
 				0C50D3382827A6B9001BBB18 /* OldSayingViewController.swift in Sources */,
+				0C26EB602830C0E40071E8B2 /* CustomButton.swift in Sources */,
+				0C7562F72830DE2900620B46 /* Model.swift in Sources */,
+				0C26EB762830C4700071E8B2 /* UIFont_Extension.swift in Sources */,
+				0C7562F32830D1CB00620B46 /* CustomProgressBar.swift in Sources */,
 				0C50D33A2827A6C5001BBB18 /* PersonViewController.swift in Sources */,
 				0C50D3362827A6B1001BBB18 /* NewSayingViewController.swift in Sources */,
+				0C26EB782830C51C0071E8B2 /* CustomLabel.swift in Sources */,
 				50DA72DF2827A2FA0073E706 /* SceneDelegate.swift in Sources */,
 				0C50D3302827A641001BBB18 /* MainViewController.swift in Sources */,
 				0C50D3322827A69C001BBB18 /* InitialLetterViewController.swift in Sources */,
@@ -304,6 +380,7 @@
 				DEVELOPMENT_TEAM = CBS8GCWABJ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CollaboGame/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -331,6 +408,7 @@
 				DEVELOPMENT_TEAM = CBS8GCWABJ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CollaboGame/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
