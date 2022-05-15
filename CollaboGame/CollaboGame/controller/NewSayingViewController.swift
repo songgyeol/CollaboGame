@@ -9,56 +9,59 @@ import UIKit
 
 class NewSayingViewController: UIViewController {
     
+    //    let newsa = CustomLabel(title: "문제")
+    //    let startBtn = CustomButton(title: "시작하기")
+    //    let progressBar = CustomProgressBar()
+    //    let passBtn = CustomPassButton(title: "PASS")
+    //
+    
     var newSayingView = UIView()
-    var newSayingLabel = UILabel()
-    var answerButton = UIButton()
-    var startButton = UIButton()
-    var nextButton = UIButton()
+    var newSayingLabel = CustomLabel(title: "신조어", size: 30)
+    var answerButton = CustomButton(title: "시작하기")
     var qAndAText = ""
     var unSelected = ""
     let qaTitle = ["문제", "정답"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .black
+        view.backgroundColor = .white
         setUI()
     }
 }
 
 //MARK: - Button Tapped
 extension NewSayingViewController {
-//    @objc
-//    func startButton(_ sender: UIButton) {
-//        startButton.isHidden = false
-//        answerButton.isHidden = false
-//        nextButton.isHidden = false
-//
-//        qAndAText = NewSaying.shared.newSayingQ["\(qaTitle[0])"]?.randomElement() ?? ""
-//        newSayingLabel.text = qAndAText
-//    }
-    
     
     @objc
     func answerButton(_ sender: UIButton) {
-        answerButton.isHidden = true
-        nextButton.isHidden = false
-        startButton.isHidden = true
         
-        let selected =  NewSaying.shared.newSayingA[qAndAText] ?? ""
-        unSelected = selected
-        newSayingLabel.text = "\(unSelected)"
+        if sender.currentTitle == "시작하기" {
+            answerButton.setTitle("정답확인", for: .normal)
+            answerButton.setTitleColor(.yellow, for: .normal)
+            qAndAText = NewSaying.shared.newSayingQ["\(qaTitle[0])"]?.randomElement() ?? ""
+            newSayingLabel.text = qAndAText
+            newSayingView.isHidden = true
+        } else if sender.currentTitle == "정답확인" {
+            newSayingLabel.textColor = .yellow
+            answerButton.setTitle("다음문제", for: .normal)
+            
+            let selected =  NewSaying.shared.newSayingA[qAndAText] ?? ""
+            unSelected = selected
+            newSayingLabel.text = "\(unSelected)"
+            
+            answerButton.setTitleColor(CustomColor.btnTextColor, for: .normal)
+        } else if sender.currentTitle == "다음문제" {
+            newSayingLabel.textColor = .white
+            answerButton.setTitle("정답확인", for: .normal)
+            qAndAText = NewSaying.shared.newSayingQ["\(qaTitle[0])"]?.randomElement() ?? ""
+            answerButton.setTitleColor(.yellow, for: .normal)
+            newSayingLabel.text = qAndAText
+            newSayingView.isHidden = true
+        }
+        
+        
     }
     
-    @objc
-    func nextButton(_ sender: UIButton) {
-        nextButton.isHidden = true
-        startButton.isHidden = true
-        answerButton.isHidden = false
-        qAndAText = NewSaying.shared.newSayingQ["\(qaTitle[0])"]?.randomElement() ?? ""
-        newSayingLabel.text = qAndAText
-        newSayingView.isHidden = true
-        
-    }
     
     
 }
@@ -70,64 +73,30 @@ extension NewSayingViewController {
     }
     
     func setBasic() {
-        [newSayingLabel,answerButton,startButton,nextButton].forEach {
+        [newSayingLabel,answerButton].forEach {
             view.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
-        newSayingLabel.text = "신조어 문제풀이"
-        newSayingLabel.backgroundColor = UIColor(red:0.59, green:0.45, blue:0.98, alpha:1.0)
-        newSayingLabel.textAlignment = .center
-        newSayingLabel.textColor = UIColor(red:0.64, green:0.26, blue:0.24, alpha:1.0)
-        newSayingLabel.numberOfLines = 5
-        newSayingLabel.font = UIFont.boldSystemFont(ofSize: 20)
-        
-        answerButton.setTitle("정답확인", for: .normal)
-        answerButton.backgroundColor = UIColor.purple
-        answerButton.layer.cornerRadius = 10
-        answerButton.sizeToFit()
-        answerButton.tintColor = .white
         answerButton.addTarget(self, action: #selector(answerButton(_:)), for: .touchUpInside)
         
-//        startButton.setTitle("S T A R T", for: .normal)
-//        startButton.backgroundColor = UIColor.purple
-//        startButton.layer.cornerRadius = 10
-//        startButton.sizeToFit()
-//        startButton.tintColor = .white//.clear
-//        startButton.addTarget(self, action: #selector(startButton(_:)), for: .touchUpInside)
-        
-        nextButton.setTitle("N E X T", for: .normal)
-        nextButton.backgroundColor = UIColor.purple
-        nextButton.layer.cornerRadius = 10
-        nextButton.sizeToFit()
-        nextButton.tintColor = .white//.clear
-        nextButton.addTarget(self, action: #selector(nextButton(_:)), for: .touchUpInside)
-        
-        
+        newSayingLabel.numberOfLines = 0
     }
     
     //MARK: - SetLayout
     func setLayout() {
         
         NSLayoutConstraint.activate([
-            newSayingLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 150),
+            
             newSayingLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            newSayingLabel.heightAnchor.constraint(equalToConstant:300),
-            newSayingLabel.widthAnchor.constraint(equalToConstant: 270),
+            newSayingLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 70),
+            newSayingLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
+            newSayingLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
+            newSayingLabel.heightAnchor.constraint(equalToConstant: 300),
             
             answerButton.topAnchor.constraint(equalTo: newSayingLabel.bottomAnchor, constant: 50),
             answerButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             answerButton.heightAnchor.constraint(equalToConstant: 70),
             answerButton.widthAnchor.constraint(equalToConstant: 270),
-            
-            startButton.topAnchor.constraint(equalTo: newSayingLabel.bottomAnchor, constant: 50),
-            startButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            startButton.heightAnchor.constraint(equalToConstant: 70),
-            startButton.widthAnchor.constraint(equalToConstant: 270),
-            
-            nextButton.topAnchor.constraint(equalTo: newSayingLabel.bottomAnchor, constant: 50),
-            nextButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            nextButton.heightAnchor.constraint(equalToConstant: 70),
-            nextButton.widthAnchor.constraint(equalToConstant: 270),
         ])
     }
     

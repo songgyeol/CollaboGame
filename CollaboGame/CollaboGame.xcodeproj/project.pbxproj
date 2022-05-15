@@ -76,7 +76,6 @@
 				0C26EB682830C38C0071E8B2 /* Pretendard-Bold.otf */,
 				0C26EB712830C3990071E8B2 /* Pretendard-Regular.otf */,
 				50DA72E72827A2FB0073E706 /* LaunchScreen.storyboard */,
-				50DA72EA2827A2FB0073E706 /* Info.plist */,
 			);
 			path = support;
 			sourceTree = "<group>";
@@ -143,6 +142,7 @@
 		50DA72DB2827A2FA0073E706 /* CollaboGame */ = {
 			isa = PBXGroup;
 			children = (
+				50DA72EA2827A2FB0073E706 /* Info.plist */,
 				0C7562F82830E5D600620B46 /* support */,
 				0C7562F92830E5FD00620B46 /* controller */,
 				0C7562FA2830E62C00620B46 /* view */,
