@@ -68,13 +68,13 @@
 		0C7562F82830E5D600620B46 /* support */ = {
 			isa = PBXGroup;
 			children = (
+				50DA72EA2827A2FB0073E706 /* Info.plist */,
 				50DA72DC2827A2FA0073E706 /* AppDelegate.swift */,
 				50DA72DE2827A2FA0073E706 /* SceneDelegate.swift */,
 				50DA72E52827A2FB0073E706 /* Assets.xcassets */,
 				0C26EB682830C38C0071E8B2 /* Pretendard-Bold.otf */,
 				0C26EB712830C3990071E8B2 /* Pretendard-Regular.otf */,
 				50DA72E72827A2FB0073E706 /* LaunchScreen.storyboard */,
-				50DA72EA2827A2FB0073E706 /* Info.plist */,
 			);
 			path = support;
 			sourceTree = "<group>";
