@@ -14,7 +14,7 @@ class CustomLabel: UILabel {
         super.init(frame: frame)
     }
 
-    init(title: String, size: CGFloat = 50) {
+    init(title: String, size: CGFloat = 40) {
         super.init(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
         font = UIFont.Pretandard(type: .Bold, size: size)
         backgroundColor = CustomColor.mainColor

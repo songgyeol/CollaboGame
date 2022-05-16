@@ -61,7 +61,7 @@ extension PersonViewController {
             startBtn.topAnchor.constraint(equalTo: progressBar.bottomAnchor, constant: 50),
             startBtn.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 70),
             startBtn.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -70),
-            startBtn.heightAnchor.constraint(equalToConstant: 60),
+            startBtn.heightAnchor.constraint(equalToConstant: 50),
             
             passBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             passBtn.topAnchor.constraint(equalTo: startBtn.bottomAnchor, constant: 20),
