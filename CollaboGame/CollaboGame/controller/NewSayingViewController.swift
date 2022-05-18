@@ -9,12 +9,6 @@ import UIKit
 
 class NewSayingViewController: UIViewController {
     
-    //    let newsa = CustomLabel(title: "문제")
-    //    let startBtn = CustomButton(title: "시작하기")
-    //    let progressBar = CustomProgressBar()
-    //    let passBtn = CustomPassButton(title: "PASS")
-    //
-    
     var newSayingView = UIView()
     var newSayingLabel = CustomLabel(title: "신조어", size: 30)
     var answerButton = CustomButton(title: "시작하기")
@@ -25,6 +19,7 @@ class NewSayingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        self.navigationItem.title = "그 말 뭐니"
         setUI()
     }
 }

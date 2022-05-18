@@ -13,7 +13,7 @@ class CustomButton: UIButton {
         super.init(frame: frame)
         
     }
-    init(title: String, size: CGFloat = 30) {
+    init(title: String, size: CGFloat = 20) {
         super.init(frame: .zero)
         setTitle(title, for: .normal)
         backgroundColor = CustomColor.startBtnColor
@@ -21,8 +21,8 @@ class CustomButton: UIButton {
         titleLabel?.font = UIFont.Pretandard(type: .Regular, size: size)
         layer.cornerRadius = 20
         clipsToBounds = true
-        layer.borderWidth = 7
-        layer.borderColor = UIColor.white.cgColor
+        //layer.borderWidth = 7
+        //layer.borderColor = UIColor.white.cgColor
     }
     
     required init?(coder: NSCoder) {
@@ -35,15 +35,15 @@ class CustomPassButton: UIButton {
         super.init(frame: frame)
         
     }
-    init(title: String, size: CGFloat = 30) {
+    init(title: String, size: CGFloat = 20) {
         super.init(frame: .zero)
         setTitle(title, for: .normal)
         backgroundColor = CustomColor.passBtnColor
         setTitleColor(CustomColor.btnTextColor, for: .normal)
         titleLabel?.font = UIFont.Pretandard(type: .Regular, size: size)
         layer.cornerRadius = 20
-        layer.borderWidth = 7
-        layer.borderColor = UIColor.white.cgColor
+        //layer.borderWidth = 7
+        //layer.borderColor = UIColor.white.cgColor
     }
     
     required init?(coder: NSCoder) {
