@@ -11,3 +11,4 @@ struct Model {
     let imageName: String
     let subTitle: String
 }
+
