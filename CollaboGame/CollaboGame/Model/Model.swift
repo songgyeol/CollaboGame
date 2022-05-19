@@ -12,3 +12,13 @@ struct Model {
     let subTitle: String
 }
 
+// MARK: - Person
+struct PersonModel: Decodable {
+    let items: [Item]
+}
+
+// MARK: - Item
+struct Item: Decodable {
+    let link: String
+    let thumbnail: String
+}
