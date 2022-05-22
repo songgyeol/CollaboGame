@@ -30,6 +30,7 @@
 		0C7562F32830D1CB00620B46 /* CustomProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7562F22830D1CB00620B46 /* CustomProgressBar.swift */; };
 		0C7562F52830D83200620B46 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7562F42830D83200620B46 /* CustomCollectionViewCell.swift */; };
 		0C7562F72830DE2900620B46 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7562F62830DE2900620B46 /* Model.swift */; };
+		505CFE14283A0C48001325FC /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505CFE13283A0C48001325FC /* Movie.swift */; };
 		509588A62830F18700404DFD /* NewSaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509588A52830F18700404DFD /* NewSaying.swift */; };
 		50DA72DD2827A2FA0073E706 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DA72DC2827A2FA0073E706 /* AppDelegate.swift */; };
 		50DA72DF2827A2FA0073E706 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DA72DE2827A2FA0073E706 /* SceneDelegate.swift */; };
@@ -59,6 +60,7 @@
 		0C7562F22830D1CB00620B46 /* CustomProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProgressBar.swift; sourceTree = "<group>"; };
 		0C7562F42830D83200620B46 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		0C7562F62830DE2900620B46 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		505CFE13283A0C48001325FC /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		509588A52830F18700404DFD /* NewSaying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSaying.swift; sourceTree = "<group>"; };
 		50DA72D92827A2FA0073E706 /* CollaboGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollaboGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50DA72DC2827A2FA0073E706 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				0C6B422028366AE50080491E /* Person.swift */,
 				0C6B422228366DF20080491E /* NetworkManager.swift */,
 				0C53A3362839FFA30080B38C /* APIManager.swift */,
+				505CFE13283A0C48001325FC /* Movie.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 				0C50D33C2827A6D6001BBB18 /* SceneViewController.swift in Sources */,
 				0C7562F52830D83200620B46 /* CustomCollectionViewCell.swift in Sources */,
 				50DA72DD2827A2FA0073E706 /* AppDelegate.swift in Sources */,
+				505CFE14283A0C48001325FC /* Movie.swift in Sources */,
 				0C6B422328366DF20080491E /* NetworkManager.swift in Sources */,
 				0C53A3372839FFA30080B38C /* APIManager.swift in Sources */,
 				0C26EB622830C12D0071E8B2 /* CustomColor.swift in Sources */,

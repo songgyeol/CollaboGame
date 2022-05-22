@@ -40,11 +40,11 @@ extension PersonViewController {
             return
         }
         print(randomPerson)
-        APIManager.shared.requestMovie(word: randomPerson) { response in
+        NetworkManager.shared.requestPhoto(word: randomPerson) { response in
             switch response {
             case .success(let person):
-                print(person.items[0].image)
-                self.urlToImage(url: person.items[0].image)
+                print(person.items[0].link)
+                self.urlToImage(url: person.items[0].link)
             case .failure(let error):
                 print("NetworkError: \(error)")
             }
