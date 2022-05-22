@@ -22,6 +22,8 @@
 		0C50D33C2827A6D6001BBB18 /* SceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C50D33B2827A6D6001BBB18 /* SceneViewController.swift */; };
 		0C50D344283263C7001BBB18 /* InitialQuiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C50D343283263C7001BBB18 /* InitialQuiz.swift */; };
 		0C50D346283263F3001BBB18 /* InitialResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C50D345283263F3001BBB18 /* InitialResultViewController.swift */; };
+		0C53A3352839F9460080B38C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0C53A3342839F9460080B38C /* Alamofire */; };
+		0C53A3372839FFA30080B38C /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C53A3362839FFA30080B38C /* APIManager.swift */; };
 		0C6B422128366AE50080491E /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6B422028366AE50080491E /* Person.swift */; };
 		0C6B422328366DF20080491E /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6B422228366DF20080491E /* NetworkManager.swift */; };
 		0C6B4226283670FB0080491E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0C6B4225283670FB0080491E /* Alamofire */; };
@@ -51,6 +53,7 @@
 		0C50D33B2827A6D6001BBB18 /* SceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneViewController.swift; sourceTree = "<group>"; };
 		0C50D343283263C7001BBB18 /* InitialQuiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialQuiz.swift; sourceTree = "<group>"; };
 		0C50D345283263F3001BBB18 /* InitialResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialResultViewController.swift; sourceTree = "<group>"; };
+		0C53A3362839FFA30080B38C /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		0C6B422028366AE50080491E /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		0C6B422228366DF20080491E /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		0C7562F22830D1CB00620B46 /* CustomProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProgressBar.swift; sourceTree = "<group>"; };
@@ -71,6 +74,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C6B4226283670FB0080491E /* Alamofire in Frameworks */,
+				0C53A3352839F9460080B38C /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +129,7 @@
 				0C50D343283263C7001BBB18 /* InitialQuiz.swift */,
 				0C6B422028366AE50080491E /* Person.swift */,
 				0C6B422228366DF20080491E /* NetworkManager.swift */,
+				0C53A3362839FFA30080B38C /* APIManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -184,6 +189,7 @@
 			name = CollaboGame;
 			packageProductDependencies = (
 				0C6B4225283670FB0080491E /* Alamofire */,
+				0C53A3342839F9460080B38C /* Alamofire */,
 			);
 			productName = CollaboGame;
 			productReference = 50DA72D92827A2FA0073E706 /* CollaboGame.app */;
@@ -215,6 +221,7 @@
 			mainGroup = 50DA72D02827A2FA0073E706;
 			packageReferences = (
 				0C6B4224283670FB0080491E /* XCRemoteSwiftPackageReference "Alamofire" */,
+				0C53A3332839F9460080B38C /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 50DA72DA2827A2FA0073E706 /* Products */;
 			projectDirPath = "";
@@ -248,6 +255,7 @@
 				0C7562F52830D83200620B46 /* CustomCollectionViewCell.swift in Sources */,
 				50DA72DD2827A2FA0073E706 /* AppDelegate.swift in Sources */,
 				0C6B422328366DF20080491E /* NetworkManager.swift in Sources */,
+				0C53A3372839FFA30080B38C /* APIManager.swift in Sources */,
 				0C26EB622830C12D0071E8B2 /* CustomColor.swift in Sources */,
 				0C50D3342827A6A8001BBB18 /* MovieViewController.swift in Sources */,
 				0C50D3382827A6B9001BBB18 /* OldSayingViewController.swift in Sources */,
@@ -480,6 +488,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		0C53A3332839F9460080B38C /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		0C6B4224283670FB0080491E /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -491,6 +507,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		0C53A3342839F9460080B38C /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0C6B4224283670FB0080491E /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
 		0C6B4225283670FB0080491E /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 0C6B4224283670FB0080491E /* XCRemoteSwiftPackageReference "Alamofire" */;

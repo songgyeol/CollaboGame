@@ -22,3 +22,16 @@ struct Item: Decodable {
     let link: String
     let thumbnail: String
 }
+
+
+
+// MARK: - Welcome
+struct Movie: Decodable {
+    let items: [MovieItem]
+}
+
+// MARK: - Item
+struct MovieItem: Decodable {
+    let link: String
+    let image: String
+}

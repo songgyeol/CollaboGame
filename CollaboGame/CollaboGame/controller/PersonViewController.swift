@@ -35,16 +35,16 @@ class PersonViewController: UIViewController {
 
 extension PersonViewController {
     func putRandomWord() {
-        guard let randomPerson = Person.shared.famousMen.randomElement() else {
+        guard let randomPerson = Person.shared.movie.randomElement() else {
             ""
             return
         }
         print(randomPerson)
-        NetworkManager.shared.requestPhoto(word: randomPerson) { response in
+        APIManager.shared.requestMovie(word: randomPerson) { response in
             switch response {
             case .success(let person):
-                print(person.items[0].link)
-                self.urlToImage(url: person.items[0].link)
+                print(person.items[0].image)
+                self.urlToImage(url: person.items[0].image)
             case .failure(let error):
                 print("NetworkError: \(error)")
             }
