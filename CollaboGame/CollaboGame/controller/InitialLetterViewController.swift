@@ -8,7 +8,7 @@
 import UIKit
 
 class InitialLetterViewController: UIViewController {
-    let quizManager = InitialQuiz.shared
+    let initialQuizManager = InitialQuiz.shared
     
     let categoryButton = UISegmentedControl(items: ["과자", "라면", "아이스크림"])
     var quizLabel = CustomLabel(title: "초성게임")
@@ -16,16 +16,12 @@ class InitialLetterViewController: UIViewController {
     let startButton = CustomButton(title: "시작하기")
     var timerLabel = UILabel()
     let progressBar = CustomProgressBar()
-    let rightAnswerButton = CustomPassButton(title: "PASS")
+    let rightAnswerButton = CustomPassButton(title: "정답확인")
     
     var timer = Timer()
-    var secondRemaining: Int = 0 {
-        didSet {
-            if secondRemaining == 20 {
-                showAlert()
-            }
-        }
-    }
+    var secondRemaining: Int = 0
+    
+    let limitTime = 5 // 게임 시간 = 타이머 시간
     
     var currentCategory = "과자"
     var currentAnswer = ""
@@ -39,17 +35,20 @@ class InitialLetterViewController: UIViewController {
         self.navigationItem.title = "초성 게임"
         configureUI()
         view.backgroundColor = .white
-        
-        //navigationController?.navigationBar.backgroundColor = MyColor.purpleColor
+
+        print("바보".getInitialLetter())
         
     }
     
     @objc func update() {
-        if secondRemaining < 21 {
-            let percentage = Float(secondRemaining) / 20
-            progressBar.setProgress(Float(percentage), animated: true)
+        if secondRemaining < limitTime {
             secondRemaining += 1
-            print(percentage)
+            let percentage = Float(secondRemaining) / Float(limitTime)
+            progressBar.setProgress(Float(percentage), animated: true)
+            print(secondRemaining)
+        } else {
+            timer.invalidate()
+            showAlert()
         }
     }
 }
@@ -61,16 +60,10 @@ extension InitialLetterViewController {
         switch sender.selectedSegmentIndex {
         case 0:
             currentCategory = "과자"
-            print("과자")
         case 1:
             currentCategory = "라면"
-            print("라면")
         case 2:
             currentCategory = "아이스크림"
-            print("아이스크림")
-        case 3:
-            currentCategory = "남자가수"
-            print("남자가수")
         default:
             break
         }
@@ -95,10 +88,12 @@ extension InitialLetterViewController {
 
     func getInitialLetter() -> String {
         var result = ""
-        guard let randomWord = quizManager.quiz[currentCategory]?.randomElement() else { fatalError() }
+        guard let randomWord = initialQuizManager.quiz[currentCategory]?.randomElement() else { fatalError() }
         currentAnswer = randomWord
-        questionArray.append(randomWord)
-        print(questionArray)
+        if !initialQuizManager.resultArray.keys.contains(randomWord) {
+            initialQuizManager.testArray.append(randomWord)
+        }
+        
         // 문자열하나씩 짤라서 확인
         for char in randomWord {
             let octal = char.unicodeScalars[char.unicodeScalars.startIndex].value
@@ -107,24 +102,27 @@ extension InitialLetterViewController {
                 result = result + hangul[Int(index)]
             }
         }
-        
+        initialQuizManager.resultArray[result] = randomWord
+        print(randomWord)
         return result
     }
+    
+    
     
     func showAlert() {
         print("alert")
         let alert = UIAlertController(title: "게임 끝!", message: "결과를 확인하시겠습니까?", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "결과보기", style: .default) {_ in
+        let okAction = UIAlertAction(title: "결과보기", style: .default) { [weak self] _ in
             let nextVC = InitialResultViewController()
-            self.present(nextVC, animated: true)
+            self?.present(nextVC, animated: true)
         }
-        let cancelAction = UIAlertAction(title: "다시하기", style: .cancel) { _ in
-            self.timer.invalidate()
-            self.quizLabel.text = "이름을 맞추세요"
-            self.secondRemaining = 0
-            self.startButton.setTitle("시작하기", for: .normal)
-            self.progressBar.progress = 0.0
-            self.questionArray = []
+        let cancelAction = UIAlertAction(title: "다시하기", style: .cancel) { [weak self] _ in
+            self?.timer.invalidate()
+            self?.quizLabel.text = "이름을 맞추세요"
+            self?.secondRemaining = 0
+            self?.startButton.setTitle("시작하기", for: .normal)
+            self?.progressBar.progress = 0.0
+            self?.questionArray = []
             
         }
         alert.addAction(okAction)

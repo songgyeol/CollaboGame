@@ -17,7 +17,7 @@ final class NetworkManager {
         
         let parameter: Parameters = [
             "display": 1,
-            "query": "\(word) 단독 화보",
+            "query": "\(word)",
             "sort": "sim"
         ]
         
