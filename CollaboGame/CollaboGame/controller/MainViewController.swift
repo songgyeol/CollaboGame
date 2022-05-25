@@ -31,15 +31,19 @@ class MainViewController: UIViewController {
 
 extension MainViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let size = CGSize(width: view.frame.width/2, height: view.frame.width/2)
+        let collectionCellWidth = (UIScreen.main.bounds.width - CVCell.spacingWitdh * (CVCell.cellColumns - 1)-30) / CVCell.cellColumns
+        let size = CGSize(width: collectionCellWidth, height: collectionCellWidth)
         return size
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        return 10
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        return 13
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     }
 }
 
@@ -70,6 +74,7 @@ extension MainViewController: UICollectionViewDataSource {
         cell.iconImageView.image = UIImage(systemName: model[indexPath.item].imageName)
         cell.gameTitle.text = model[indexPath.item].gameTitle
         cell.subTitle.text = model[indexPath.item].subTitle
+        cell.backgroundColor = .yellow
         return cell
     }
     

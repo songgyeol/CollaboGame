@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 extension String {
     
     func getInitialLetter() -> String {

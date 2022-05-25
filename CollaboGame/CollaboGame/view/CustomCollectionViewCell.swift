@@ -17,15 +17,20 @@ class CustomCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setContentView()
         setConstraints()
         setImageView()
         setTitle()
     }
     
+    func setContentView() {
+        contentView.layer.cornerRadius = 30
+        contentView.layer.masksToBounds = true
+    }
+    
     func setImageView() {
         iconImageView.contentMode = .scaleAspectFit
         iconImageView.tintColor = .black
-        
     }
     
     func setTitle() {

@@ -31,6 +31,7 @@
 		0C7562F32830D1CB00620B46 /* CustomProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7562F22830D1CB00620B46 /* CustomProgressBar.swift */; };
 		0C7562F52830D83200620B46 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7562F42830D83200620B46 /* CustomCollectionViewCell.swift */; };
 		0C7562F72830DE2900620B46 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7562F62830DE2900620B46 /* Model.swift */; };
+		0CF277EB283E594C00AFC330 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF277EA283E594C00AFC330 /* Constant.swift */; };
 		505CFE14283A0C48001325FC /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505CFE13283A0C48001325FC /* Movie.swift */; };
 		509588A62830F18700404DFD /* NewSaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509588A52830F18700404DFD /* NewSaying.swift */; };
 		50DA72DD2827A2FA0073E706 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DA72DC2827A2FA0073E706 /* AppDelegate.swift */; };
@@ -62,6 +63,7 @@
 		0C7562F22830D1CB00620B46 /* CustomProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProgressBar.swift; sourceTree = "<group>"; };
 		0C7562F42830D83200620B46 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		0C7562F62830DE2900620B46 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		0CF277EA283E594C00AFC330 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		505CFE13283A0C48001325FC /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		509588A52830F18700404DFD /* NewSaying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSaying.swift; sourceTree = "<group>"; };
 		50DA72D92827A2FA0073E706 /* CollaboGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollaboGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -148,10 +150,19 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		0CF277E9283E593D00AFC330 /* helpers */ = {
+			isa = PBXGroup;
+			children = (
+				0CF277EA283E594C00AFC330 /* Constant.swift */,
+			);
+			path = helpers;
+			sourceTree = "<group>";
+		};
 		50DA72D02827A2FA0073E706 = {
 			isa = PBXGroup;
 			children = (
 				50DA72DB2827A2FA0073E706 /* CollaboGame */,
+				0C7562F82830E5D600620B46 /* support */,
 				50DA72DA2827A2FA0073E706 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -167,8 +178,8 @@
 		50DA72DB2827A2FA0073E706 /* CollaboGame */ = {
 			isa = PBXGroup;
 			children = (
+				0CF277E9283E593D00AFC330 /* helpers */,
 				50DA72EA2827A2FB0073E706 /* Info.plist */,
-				0C7562F82830E5D600620B46 /* support */,
 				0C7562F92830E5FD00620B46 /* controller */,
 				0C7562FA2830E62C00620B46 /* view */,
 				0C7562FC2830E64900620B46 /* Extension */,
@@ -274,6 +285,7 @@
 				0C6B422128366AE50080491E /* Person.swift in Sources */,
 				0C7562F32830D1CB00620B46 /* CustomProgressBar.swift in Sources */,
 				0C50D344283263C7001BBB18 /* InitialQuiz.swift in Sources */,
+				0CF277EB283E594C00AFC330 /* Constant.swift in Sources */,
 				0C50D33A2827A6C5001BBB18 /* PersonViewController.swift in Sources */,
 				0C50D3362827A6B1001BBB18 /* NewSayingViewController.swift in Sources */,
 				0C26EB782830C51C0071E8B2 /* CustomLabel.swift in Sources */,
