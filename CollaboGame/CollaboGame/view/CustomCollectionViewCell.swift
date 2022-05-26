@@ -24,21 +24,23 @@ class CustomCollectionViewCell: UICollectionViewCell {
     }
     
     func setContentView() {
-        contentView.layer.cornerRadius = 30
+        contentView.layer.borderWidth = 1
+        contentView.layer.borderColor = CustomColor.darkGrayTextColor.cgColor
         contentView.layer.masksToBounds = true
+        contentView.layer.cornerRadius = 30
     }
     
     func setImageView() {
         iconImageView.contentMode = .scaleAspectFit
-        iconImageView.tintColor = .black
+        iconImageView.tintColor = CustomColor.deepDarkGrayColor
     }
     
     func setTitle() {
-        gameTitle.textColor = .black
+        gameTitle.textColor = CustomColor.deepDarkGrayColor
         gameTitle.font = UIFont.Pretandard(type: .Bold, size: 20)
         gameTitle.textAlignment = .center
         subTitle.textColor = CustomColor.startBtnColor
-        subTitle.font = UIFont.Pretandard(type: .Bold, size: 18)
+        subTitle.font = UIFont.Pretandard(type: .Regular, size: 18)
         subTitle.textAlignment = .center
     }
     
@@ -49,11 +51,11 @@ class CustomCollectionViewCell: UICollectionViewCell {
         }
         
         NSLayoutConstraint.activate([
-            iconImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 50),
+            iconImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 40),
             iconImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             iconImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            iconImageView.heightAnchor.constraint(equalToConstant: 50),
+            iconImageView.heightAnchor.constraint(equalToConstant: 35),
             
             gameTitle.topAnchor.constraint(equalTo: iconImageView.bottomAnchor, constant: 20),
             gameTitle.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
@@ -68,7 +70,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
             subTitle.heightAnchor.constraint(equalToConstant: 20),
         ])
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

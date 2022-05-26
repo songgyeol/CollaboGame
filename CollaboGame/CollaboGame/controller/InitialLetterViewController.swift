@@ -11,7 +11,7 @@ class InitialLetterViewController: UIViewController {
     let initialQuizManager = InitialQuiz.shared
     
     let categoryButton = UISegmentedControl(items: ["과자", "라면", "아이스크림"])
-    var quizLabel = CustomLabel(title: "초성게임")
+    var quizLabel = CustomLabel(title: "🍒 초성게임")
     
     let startButton = CustomButton(title: "시작하기")
     var timerLabel = UILabel()
@@ -25,20 +25,21 @@ class InitialLetterViewController: UIViewController {
     
     var currentCategory = "과자"
     var currentAnswer = ""
-    var questionArray = [String]()
-    
-    let hangul = ["ㄱ","ㄲ","ㄴ","ㄷ","ㄸ","ㄹ","ㅁ","ㅂ","ㅃ","ㅅ","ㅆ","ㅇ","ㅈ","ㅉ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"]
-    
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "초성 게임"
         configureUI()
         view.backgroundColor = .white
-
-        print("바보".getInitialLetter())
-        
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print(#function)
+        super.viewWillAppear(animated)
+    }
+    
+    
     
     @objc func update() {
         if secondRemaining < limitTime {
@@ -47,8 +48,8 @@ class InitialLetterViewController: UIViewController {
             progressBar.setProgress(Float(percentage), animated: true)
             print(secondRemaining)
         } else {
-            timer.invalidate()
             showAlert()
+            timer.invalidate()
         }
     }
 }
@@ -70,41 +71,51 @@ extension InitialLetterViewController {
     }
     
     @objc private func buttonTapped(_ sender: UIButton) {
-        timer.invalidate()
-        switch sender {
-        case startButton:
+        //구별 필요 타이머가 이상함
+////        timer.invalidate()
+//        switch sender {
+//        case startButton:
+//            startButton.setTitle("다음 문제", for: .normal)
+//            timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(update), userInfo: nil, repeats: true)
+//            timerLabel.isHidden = true
+//            progressBar.isHidden = false
+//            quizLabel.text = getInitialLetter()
+////            timer.invalidate()
+//
+//        case rightAnswerButton:
+//            quizLabel.text = currentAnswer
+//        default:
+//            break
+//        }
+        
+        switch sender.currentTitle {
+        case "시작하기":
             startButton.setTitle("다음 문제", for: .normal)
             timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(update), userInfo: nil, repeats: true)
             timerLabel.isHidden = true
             progressBar.isHidden = false
             quizLabel.text = getInitialLetter()
-        case rightAnswerButton:
+        case "다음 문제":
+            quizLabel.text = getInitialLetter()
+            //timer.invalidate()
+        case "정답확인":
             quizLabel.text = currentAnswer
         default:
             break
+            
         }
         
     }
 
     func getInitialLetter() -> String {
-        var result = ""
         guard let randomWord = initialQuizManager.quiz[currentCategory]?.randomElement() else { fatalError() }
         currentAnswer = randomWord
-        if !initialQuizManager.resultArray.keys.contains(randomWord) {
-            initialQuizManager.testArray.append(randomWord)
+        if !initialQuizManager.resultArray.contains(randomWord) {
+            initialQuizManager.resultArray.append(randomWord)
         }
-        
-        // 문자열하나씩 짤라서 확인
-        for char in randomWord {
-            let octal = char.unicodeScalars[char.unicodeScalars.startIndex].value
-            if 44032...55203 ~= octal { // 유니코드가 한글값 일때만 분리작업
-                let index = (octal - 0xac00) / 28 / 21
-                result = result + hangul[Int(index)]
-            }
-        }
-        initialQuizManager.resultArray[result] = randomWord
         print(randomWord)
-        return result
+        print(initialQuizManager.resultArray)
+        return randomWord.getInitialLetter()
     }
     
     
@@ -115,15 +126,21 @@ extension InitialLetterViewController {
         let okAction = UIAlertAction(title: "결과보기", style: .default) { [weak self] _ in
             let nextVC = InitialResultViewController()
             self?.present(nextVC, animated: true)
+            self?.startButton.setTitle("시작하기", for: .normal)
+            self?.quizLabel.text = "초성게임"
+            self?.secondRemaining = 0
+            self?.progressBar.progress = 0.0
+            self?.currentAnswer = "초성게임"
         }
         let cancelAction = UIAlertAction(title: "다시하기", style: .cancel) { [weak self] _ in
+            self?.startButton.setTitle("시작하기", for: .normal)
+            self?.quizLabel.text = "초성게임"
             self?.timer.invalidate()
             self?.quizLabel.text = "이름을 맞추세요"
             self?.secondRemaining = 0
             self?.startButton.setTitle("시작하기", for: .normal)
             self?.progressBar.progress = 0.0
-            self?.questionArray = []
-            
+            self?.currentAnswer = "초성게임"
         }
         alert.addAction(okAction)
         alert.addAction(cancelAction)
@@ -140,6 +157,8 @@ extension InitialLetterViewController {
     }
     
     final private func setAttributes() {
+        
+        
         [categoryButton].forEach {
             $0.backgroundColor = UIColor.white
             $0.selectedSegmentTintColor = CustomColor.startBtnColor

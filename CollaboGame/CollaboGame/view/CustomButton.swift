@@ -21,8 +21,8 @@ class CustomButton: UIButton {
         titleLabel?.font = UIFont.Pretandard(type: .Regular, size: size)
         layer.cornerRadius = 20
         clipsToBounds = true
-        //layer.borderWidth = 7
-        //layer.borderColor = UIColor.white.cgColor
+        layer.borderWidth = 2
+        layer.borderColor = myColor.deepPurple.cgColor
     }
     
     required init?(coder: NSCoder) {
@@ -42,8 +42,8 @@ class CustomPassButton: UIButton {
         setTitleColor(CustomColor.btnTextColor, for: .normal)
         titleLabel?.font = UIFont.Pretandard(type: .Regular, size: size)
         layer.cornerRadius = 20
-        //layer.borderWidth = 7
-        //layer.borderColor = UIColor.white.cgColor
+        layer.borderWidth = 2
+        layer.borderColor = myColor.green.cgColor
     }
     
     required init?(coder: NSCoder) {

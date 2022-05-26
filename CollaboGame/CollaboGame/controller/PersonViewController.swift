@@ -20,7 +20,7 @@ class PersonViewController: UIViewController {
         view.backgroundColor = UIColor.white
         configureUI()
         
-        putRandomWord()
+        //putRandomWord()
 //        NetworkManager.shared.requestPhoto(word: "원빈") { response in
 //            switch response {
 //            case .success(let person):
@@ -35,20 +35,12 @@ class PersonViewController: UIViewController {
 
 extension PersonViewController {
     func putRandomWord() {
-        guard let randomPerson = Person.shared.movie.randomElement() else {
+        guard let randomPerson = Person.shared.test.randomElement() else {
             ""
             return
         }
         print(randomPerson)
-        NetworkManager.shared.requestPhoto(word: randomPerson) { response in
-            switch response {
-            case .success(let person):
-                print(person.items[0].link)
-                self.urlToImage(url: person.items[0].link)
-            case .failure(let error):
-                print("NetworkError: \(error)")
-            }
-        }
+        quizImageView.image = UIImage(named: randomPerson)
     }
     
     func urlToImage(url: String) {
@@ -88,6 +80,7 @@ extension PersonViewController {
         quizImageView.layer.cornerRadius = 20
         quizImageView.clipsToBounds = true
         quizImageView.contentMode = .scaleAspectFit
+
     }
     final private func addTarget() {
         startBtn.addTarget(self, action: #selector(startBtnTapped(_:)), for: .touchUpInside)

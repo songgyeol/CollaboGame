@@ -31,7 +31,7 @@ class MainViewController: UIViewController {
 
 extension MainViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let collectionCellWidth = (UIScreen.main.bounds.width - CVCell.spacingWitdh * (CVCell.cellColumns - 1)-30) / CVCell.cellColumns
+        let collectionCellWidth = (UIScreen.main.bounds.width - CVCell.spacingWitdh * (CVCell.cellColumns - 1)-60) / CVCell.cellColumns
         let size = CGSize(width: collectionCellWidth, height: collectionCellWidth)
         return size
     }
@@ -40,10 +40,10 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
         return 10
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 13
+        return 20
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
     }
 }
 
@@ -74,7 +74,6 @@ extension MainViewController: UICollectionViewDataSource {
         cell.iconImageView.image = UIImage(systemName: model[indexPath.item].imageName)
         cell.gameTitle.text = model[indexPath.item].gameTitle
         cell.subTitle.text = model[indexPath.item].subTitle
-        cell.backgroundColor = .yellow
         return cell
     }
     

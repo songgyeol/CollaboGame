@@ -16,4 +16,24 @@ struct CustomColor {
     static let mainTextColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1.00)
     static let btnTextColor = UIColor(red: 0.05, green: 0.09, blue: 0.37, alpha: 1.00)
     static let progressColor = UIColor(red: 0.95, green: 0.14, blue: 0.14, alpha: 1.00)
+    static let darkGrayTextColor = UIColor(red: 0.53, green: 0.53, blue: 0.53, alpha: 1.00)
+    static let deepDarkGrayColor = UIColor(red: 0.27, green: 0.27, blue: 0.27, alpha: 1.00)
+}
+
+struct myColor {
+    //greenColor, pinkColor, redColor, shadowPink
+    static let greenColor = UIColor(red: 0.31, green: 0.65, blue: 0.32, alpha: 1.00)
+    static let pinkColor = UIColor(red: 1.00, green: 0.51, blue: 0.65, alpha: 1.00)
+    static let redColor = UIColor(red: 0.93, green: 0.09, blue: 0.00, alpha: 1.00)
+    static let shadowPink = UIColor(red: 0.98, green: 0.93, blue: 1.00, alpha: 1.00)
+    
+    //purple, deepPurple
+    static let purple = UIColor(red: 0.43, green: 0.39, blue: 0.64, alpha: 1.00)
+    static let deepPurple = UIColor(red: 0.35, green: 0.23, blue: 0.53, alpha: 1.00)
+    //yello, deepYellow
+    static let yellow = UIColor(red: 0.92, green: 0.73, blue: 0.41, alpha: 1.00)
+    static let deepYellow = UIColor(red: 0.88, green: 0.59, blue: 0.13, alpha: 1.00)
+    //green, deepPurple, yellow
+    static let green = UIColor(red: 0.19, green: 0.40, blue: 0.20, alpha: 1.00)
+    
 }
