@@ -127,20 +127,19 @@ extension InitialLetterViewController {
             let nextVC = InitialResultViewController()
             self?.present(nextVC, animated: true)
             self?.startButton.setTitle("시작하기", for: .normal)
-            self?.quizLabel.text = "초성게임"
+            self?.quizLabel.text = "🍒 초성게임"
             self?.secondRemaining = 0
             self?.progressBar.progress = 0.0
-            self?.currentAnswer = "초성게임"
+            self?.currentAnswer = "🍒 초성게임"
         }
         let cancelAction = UIAlertAction(title: "다시하기", style: .cancel) { [weak self] _ in
             self?.startButton.setTitle("시작하기", for: .normal)
-            self?.quizLabel.text = "초성게임"
             self?.timer.invalidate()
-            self?.quizLabel.text = "이름을 맞추세요"
+            self?.quizLabel.text = "🍒 초성게임"
             self?.secondRemaining = 0
             self?.startButton.setTitle("시작하기", for: .normal)
             self?.progressBar.progress = 0.0
-            self?.currentAnswer = "초성게임"
+            self?.currentAnswer = "🍒 초성게임"
         }
         alert.addAction(okAction)
         alert.addAction(cancelAction)
@@ -168,7 +167,7 @@ extension InitialLetterViewController {
 
         
         [timerLabel].forEach {
-            $0.text = "제한 시간 : 60초"
+            $0.text = "제한 시간 : 30초"
             $0.textAlignment = .center
             $0.textColor = .black
             $0.font = UIFont.systemFont(ofSize: 20)

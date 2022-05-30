@@ -9,65 +9,35 @@ import UIKit
 
 class PersonViewController: UIViewController {
     
-    private let woman = UIButton()
-    private let man = UIButton()
+    private let hintLabel = UILabel()
+    private let hintButton = UIButton()
     private let mainLabel = CustomLabel(title: "문제")
     private var quizImageView = UIImageView()
     private let startBtn = CustomButton(title: "시작하기")
     private let progressBar = CustomProgressBar()
-    private let passBtn = CustomPassButton(title: "PASS")
+    private let rightAnswerBtn = CustomPassButton(title: "정답확인")
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "그 사람 누구니"
         view.backgroundColor = UIColor.white
         configureUI()
-        
-        //putRandomWord()
-//        NetworkManager.shared.requestPhoto(word: "원빈") { response in
-//            switch response {
-//            case .success(let person):
-//                print("되나보자\(person.items[0].link)")
-//            case .failure(let error):
-//                print("에러나면 죽어\(error)")
-//            }
-//        }
     }
 
 }
 
 extension PersonViewController {
-    func putRandomWord() {
-        guard let randomPerson = Person.shared.famousMen.randomElement() else {
-            ""
-            return
-        }
-        print(randomPerson)
-        quizImageView.image = UIImage(named: randomPerson)
+    @objc func hintButtonTapped(_ sender: UIButton) {
+        hintLabel.text = Person.shared.randomPerson.getInitialLetter()
     }
-//
-//    func urlToImage(url: String) {
-//        guard let url = URL(string: url) else { fatalError() }
-//
-//        // 오래걸리는 작업을 동시성 처리 (다른 쓰레드에서 일시킴)
-//        DispatchQueue.global().async {
-//            // URL을 가지고 데이터를 만드는 메서드 (오래걸리는데 동기적인 실행)
-//            // (일반적으로 이미지를 가져올때 많이 사용)
-//            guard let data = try? Data(contentsOf: url) else { return }
-//
-//            // 작업의 결과물을 이미로 표시 (메인큐)
-//            DispatchQueue.main.async {
-//                self.quizImageView.image = UIImage(data: data)
-//            }
-//        }
-//    }
-}
-
-extension PersonViewController {
+    
     @objc func startBtnTapped(_ sender: UIButton) {
         sender.setTitle("다음 문제", for: .normal)
-        putRandomWord()
+        Person.shared.getRandomPerson()
+        quizImageView.image = UIImage(named: Person.shared.randomPerson)
+        hintLabel.text = "힌트가 필요할 때는 ➡️"
     }
+    
 }
 
 //MARK: -UI
@@ -84,29 +54,36 @@ extension PersonViewController {
         quizImageView.clipsToBounds = true
         quizImageView.contentMode = .scaleAspectFit
         
-        [woman, man].forEach {
+        [hintButton].forEach {
             $0.tintColor = CustomColor.startBtnColor
             $0.layer.cornerRadius = 20
             $0.layer.borderWidth = 2
             $0.layer.borderColor = CustomColor.startBtnColor.cgColor
-            $0.imageView?.contentMode = .scaleAspectFit
-            $0.imageEdgeInsets = .init(top: 10, left: 0, bottom: 10, right: 0)
-            woman.setImage(UIImage(named: "여자"), for: .normal)
-            man.setImage(UIImage(named: "남자"), for: .normal)
+//            $0.imageView?.contentMode = .scaleAspectFit
+//            $0.imageEdgeInsets = .init(top: 10, left: 0, bottom: 10, right: 0)
+            hintButton.setTitle("힌트", for: .normal)
+            hintButton.setTitleColor(CustomColor.btnTextColor, for: .normal)
         }
+        [hintLabel].forEach {
+            $0.text = ""
+            $0.font = UIFont.Pretandard(type: .Light, size: 20)
+            $0.textAlignment = .center
+        }
+        
+        
 
     }
     final private func addTarget() {
         startBtn.addTarget(self, action: #selector(startBtnTapped(_:)), for: .touchUpInside)
+        hintButton.addTarget(self, action: #selector(hintButtonTapped(_:)), for: .touchUpInside)
     }
 
     final private func setConstraints() {
-        let stackView = UIStackView(arrangedSubviews: [woman, man])
-        stackView.distribution = .fillEqually
+        let stackView = UIStackView(arrangedSubviews: [hintLabel, hintButton])
         stackView.axis = .horizontal
         stackView.spacing = 5
         
-        [stackView, startBtn, passBtn, progressBar, quizImageView].forEach {
+        [stackView, startBtn, rightAnswerBtn, progressBar, quizImageView].forEach {
             view.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -114,9 +91,11 @@ extension PersonViewController {
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
             stackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-            stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 50),
-            stackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -50),
+            stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
+            stackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
             stackView.heightAnchor.constraint(equalToConstant: 50),
+            
+            hintButton.widthAnchor.constraint(equalToConstant: 80),
             
             quizImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             quizImageView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 30),
@@ -136,11 +115,11 @@ extension PersonViewController {
             startBtn.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -70),
             startBtn.heightAnchor.constraint(equalToConstant: 50),
             
-            passBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            passBtn.topAnchor.constraint(equalTo: startBtn.bottomAnchor, constant: 20),
-            passBtn.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 70),
-            passBtn.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -70),
-            passBtn.heightAnchor.constraint(equalTo: startBtn.heightAnchor),
+            rightAnswerBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            rightAnswerBtn.topAnchor.constraint(equalTo: startBtn.bottomAnchor, constant: 20),
+            rightAnswerBtn.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 70),
+            rightAnswerBtn.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -70),
+            rightAnswerBtn.heightAnchor.constraint(equalTo: startBtn.heightAnchor),
         ])
     }
 }
