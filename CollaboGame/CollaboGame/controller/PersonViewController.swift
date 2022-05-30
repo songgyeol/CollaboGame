@@ -8,6 +8,9 @@
 import UIKit
 
 class PersonViewController: UIViewController {
+    
+    private let woman = UIButton()
+    private let man = UIButton()
     private let mainLabel = CustomLabel(title: "문제")
     private var quizImageView = UIImageView()
     private let startBtn = CustomButton(title: "시작하기")
@@ -35,29 +38,29 @@ class PersonViewController: UIViewController {
 
 extension PersonViewController {
     func putRandomWord() {
-        guard let randomPerson = Person.shared.test.randomElement() else {
+        guard let randomPerson = Person.shared.famousMen.randomElement() else {
             ""
             return
         }
         print(randomPerson)
         quizImageView.image = UIImage(named: randomPerson)
     }
-    
-    func urlToImage(url: String) {
-        guard let url = URL(string: url) else { fatalError() }
-        
-        // 오래걸리는 작업을 동시성 처리 (다른 쓰레드에서 일시킴)
-        DispatchQueue.global().async {
-            // URL을 가지고 데이터를 만드는 메서드 (오래걸리는데 동기적인 실행)
-            // (일반적으로 이미지를 가져올때 많이 사용)
-            guard let data = try? Data(contentsOf: url) else { return }
-            
-            // 작업의 결과물을 이미로 표시 (메인큐)
-            DispatchQueue.main.async {
-                self.quizImageView.image = UIImage(data: data)
-            }
-        }
-    }
+//
+//    func urlToImage(url: String) {
+//        guard let url = URL(string: url) else { fatalError() }
+//
+//        // 오래걸리는 작업을 동시성 처리 (다른 쓰레드에서 일시킴)
+//        DispatchQueue.global().async {
+//            // URL을 가지고 데이터를 만드는 메서드 (오래걸리는데 동기적인 실행)
+//            // (일반적으로 이미지를 가져올때 많이 사용)
+//            guard let data = try? Data(contentsOf: url) else { return }
+//
+//            // 작업의 결과물을 이미로 표시 (메인큐)
+//            DispatchQueue.main.async {
+//                self.quizImageView.image = UIImage(data: data)
+//            }
+//        }
+//    }
 }
 
 extension PersonViewController {
@@ -80,33 +83,55 @@ extension PersonViewController {
         quizImageView.layer.cornerRadius = 20
         quizImageView.clipsToBounds = true
         quizImageView.contentMode = .scaleAspectFit
+        
+        [woman, man].forEach {
+            $0.tintColor = CustomColor.startBtnColor
+            $0.layer.cornerRadius = 20
+            $0.layer.borderWidth = 2
+            $0.layer.borderColor = CustomColor.startBtnColor.cgColor
+            $0.imageView?.contentMode = .scaleAspectFit
+            $0.imageEdgeInsets = .init(top: 10, left: 0, bottom: 10, right: 0)
+            woman.setImage(UIImage(named: "여자"), for: .normal)
+            man.setImage(UIImage(named: "남자"), for: .normal)
+        }
 
     }
     final private func addTarget() {
         startBtn.addTarget(self, action: #selector(startBtnTapped(_:)), for: .touchUpInside)
     }
-    
+
     final private func setConstraints() {
-        [startBtn, passBtn, progressBar, quizImageView].forEach {
+        let stackView = UIStackView(arrangedSubviews: [woman, man])
+        stackView.distribution = .fillEqually
+        stackView.axis = .horizontal
+        stackView.spacing = 5
+        
+        [stackView, startBtn, passBtn, progressBar, quizImageView].forEach {
             view.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         
         NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
+            stackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 50),
+            stackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -50),
+            stackView.heightAnchor.constraint(equalToConstant: 50),
+            
             quizImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            quizImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
+            quizImageView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 30),
             quizImageView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
             quizImageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
             quizImageView.heightAnchor.constraint(equalToConstant: 300),
             
             progressBar.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            progressBar.topAnchor.constraint(equalTo: quizImageView.bottomAnchor, constant: 50),
+            progressBar.topAnchor.constraint(equalTo: quizImageView.bottomAnchor, constant: 30),
             progressBar.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
             progressBar.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
 //            progressBar.heightAnchor.constraint(equalTo: mainLabel.heightAnchor),
             
             startBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            startBtn.topAnchor.constraint(equalTo: progressBar.bottomAnchor, constant: 50),
+            startBtn.topAnchor.constraint(equalTo: progressBar.bottomAnchor, constant: 30),
             startBtn.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 70),
             startBtn.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -70),
             startBtn.heightAnchor.constraint(equalToConstant: 50),
