@@ -125,7 +125,9 @@ extension InitialLetterViewController {
         let alert = UIAlertController(title: "게임 끝!", message: "결과를 확인하시겠습니까?", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "결과보기", style: .default) { [weak self] _ in
             let nextVC = InitialResultViewController()
-            self?.present(nextVC, animated: true)
+            nextVC.resultArray = self?.initialQuizManager.resultArray
+            self?.navigationController?.pushViewController(nextVC, animated: true)
+//            self?.present(nextVC, animated: true)
             self?.startButton.setTitle("시작하기", for: .normal)
             self?.quizLabel.text = "🍒 초성게임"
             self?.secondRemaining = 0

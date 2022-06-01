@@ -39,6 +39,8 @@
 		0CF277FA283F976200AFC330 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0CF277F1283F976200AFC330 /* Pretendard-Bold.otf */; };
 		0CF277FB283F976200AFC330 /* Pretendard-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0CF277F2283F976200AFC330 /* Pretendard-Black.otf */; };
 		0CF277FC283F976200AFC330 /* Pretendard-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0CF277F3283F976200AFC330 /* Pretendard-ExtraLight.otf */; };
+		0CF2781F28450C3F00AFC330 /* InitialTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF2781E28450C3F00AFC330 /* InitialTableViewCell.swift */; };
+		0CF2782128473E2E00AFC330 /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF2782028473E2E00AFC330 /* MovieModel.swift */; };
 		505CFE14283A0C48001325FC /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505CFE13283A0C48001325FC /* Movie.swift */; };
 		509588A62830F18700404DFD /* NewSaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509588A52830F18700404DFD /* NewSaying.swift */; };
 		50DA72DD2827A2FA0073E706 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DA72DC2827A2FA0073E706 /* AppDelegate.swift */; };
@@ -78,6 +80,8 @@
 		0CF277F1283F976200AFC330 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Pretendard-Bold.otf"; path = "../../../../Downloads/Pretendard-1/public/static/Pretendard-Bold.otf"; sourceTree = "<group>"; };
 		0CF277F2283F976200AFC330 /* Pretendard-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Black.otf"; sourceTree = "<group>"; };
 		0CF277F3283F976200AFC330 /* Pretendard-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraLight.otf"; sourceTree = "<group>"; };
+		0CF2781E28450C3F00AFC330 /* InitialTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialTableViewCell.swift; sourceTree = "<group>"; };
+		0CF2782028473E2E00AFC330 /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
 		505CFE13283A0C48001325FC /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		509588A52830F18700404DFD /* NewSaying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSaying.swift; sourceTree = "<group>"; };
 		50DA72D92827A2FA0073E706 /* CollaboGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollaboGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -144,6 +148,7 @@
 				0C26EB772830C51C0071E8B2 /* CustomLabel.swift */,
 				0C7562F22830D1CB00620B46 /* CustomProgressBar.swift */,
 				0C7562F42830D83200620B46 /* CustomCollectionViewCell.swift */,
+				0CF2781E28450C3F00AFC330 /* InitialTableViewCell.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -158,6 +163,7 @@
 				0C6B422228366DF20080491E /* NetworkManager.swift */,
 				0C53A3362839FFA30080B38C /* APIManager.swift */,
 				505CFE13283A0C48001325FC /* Movie.swift */,
+				0CF2782028473E2E00AFC330 /* MovieModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -296,6 +302,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CF2781F28450C3F00AFC330 /* InitialTableViewCell.swift in Sources */,
 				0C50D33C2827A6D6001BBB18 /* SceneViewController.swift in Sources */,
 				0C7562F52830D83200620B46 /* CustomCollectionViewCell.swift in Sources */,
 				50DA72DD2827A2FA0073E706 /* AppDelegate.swift in Sources */,
@@ -313,6 +320,7 @@
 				0C6B422128366AE50080491E /* Person.swift in Sources */,
 				0C7562F32830D1CB00620B46 /* CustomProgressBar.swift in Sources */,
 				0C50D344283263C7001BBB18 /* InitialQuiz.swift in Sources */,
+				0CF2782128473E2E00AFC330 /* MovieModel.swift in Sources */,
 				0CF277EB283E594C00AFC330 /* Constant.swift in Sources */,
 				0C50D33A2827A6C5001BBB18 /* PersonViewController.swift in Sources */,
 				0C50D3362827A6B1001BBB18 /* NewSayingViewController.swift in Sources */,

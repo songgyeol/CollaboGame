@@ -32,6 +32,6 @@ struct Movie: Decodable {
 
 // MARK: - Item
 struct MovieItem: Decodable {
-    let link: String
     let image: String
+    let director: String
 }
