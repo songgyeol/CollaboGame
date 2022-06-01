@@ -8,14 +8,10 @@
 import UIKit
 
 class MovieViewController: UIViewController {
-    var movieView = UIView()
     var mainLabel = CustomLabel(title: "영화명대사", size: 30)
     let movieImageView = UIImageView()
     var answerButton = CustomButton(title: "시작하기")
     var qAndAText = ""
-    var unSelected = ""
-    let qaTitle = ["문제", "정답"]
-    
     var movieTitle = ""
     var year = 0
     
@@ -23,23 +19,9 @@ class MovieViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         self.navigationItem.title = "그 대사 뭐니"
-        
-        let random = MovieLine.shared.yearMovie.randomElement()
-        movieTitle = random?.key ?? "스물"
-        year = random?.value ?? 2022
-        
-        APIManager.shared.requestMovie(word: movieTitle, year: year) { response in
-            switch response {
-            case .success(let data):
-                self.loadImage(imageUrl: data.items[0].image)
-                print(data.items)
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
         setUI()
     }
-    
+//MARK: - Data
     private func loadImage(imageUrl: String) {
         let urlString = imageUrl
         guard let url = URL(string: urlString) else { return }
@@ -60,36 +42,59 @@ class MovieViewController: UIViewController {
     }
 }
 
+//MARK: -
 extension MovieViewController {
     @objc
     func answerButton(_ sender: UIButton) {
         
         if sender.currentTitle == "시작하기" {
+            qAndAText = MovieLine.shared.movieA.keys.randomElement() ?? ""
             answerButton.setTitle("정답확인", for: .normal)
             answerButton.setTitleColor(.yellow, for: .normal)
-            qAndAText = MovieLine.shared.movieQ["\(qaTitle[0])"]?.randomElement() ?? ""
-            mainLabel.text = qAndAText
-            movieView.isHidden = true
-        } else if sender.currentTitle == "정답확인" {
-            mainLabel.textColor = .yellow
-            answerButton.setTitle("다음문제", for: .normal)
             
-            let selected = MovieLine.shared.movieA[qAndAText] ?? ""
-            unSelected = selected
-            mainLabel.text = "\(unSelected)"
+            mainLabel.text = MovieLine.shared.movieA[qAndAText]
+            movieImageView.isHidden = true
+            
+        } else if sender.currentTitle == "정답확인" {
+            mainLabel.textColor = .clear
+            answerButton.setTitle("다음문제", for: .normal)
+            movieImageView.isHidden = false
+            year = MovieLine.shared.yearMovie[qAndAText] ?? 2000
+            
+            APIManager.shared.requestMovie(word: qAndAText, year: year) { response in
+                switch response {
+                case .success(let data):
+                    self.loadImage(imageUrl: data.items[0].image)
+                    print(data.items)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
             
             answerButton.setTitleColor(CustomColor.btnTextColor, for: .normal)
         } else if sender.currentTitle == "다음문제" {
+            qAndAText = MovieLine.shared.movieA.keys.randomElement() ?? ""
             mainLabel.textColor = .white
             answerButton.setTitle("정답확인", for: .normal)
-            qAndAText = MovieLine.shared.movieQ["\(qaTitle[0])"]?.randomElement() ?? ""
             answerButton.setTitleColor(.yellow, for: .normal)
-            mainLabel.text = qAndAText
-            movieView.isHidden = true
+            mainLabel.text = MovieLine.shared.movieA[qAndAText]
+            movieImageView.isHidden = true
+            year = MovieLine.shared.yearMovie[qAndAText] ?? 2000
+            
+            APIManager.shared.requestMovie(word: qAndAText, year: year) { response in
+                switch response {
+                case .success(let data):
+                    self.loadImage(imageUrl: data.items[0].image)
+                    print(data.items)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
         }
     }
 }
 
+//MARK: - UI
 extension MovieViewController {
     func setUI() {
         setBasic()
@@ -105,7 +110,7 @@ extension MovieViewController {
         mainLabel.numberOfLines = 0
     }
     
-    //MARK: - SetLayout
+//MARK: - SetLayout
     func setLayout() {
         
         NSLayoutConstraint.activate([
