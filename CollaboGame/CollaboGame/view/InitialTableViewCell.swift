@@ -16,10 +16,13 @@ class InitialTableViewCell: UITableViewCell {
     var quizLabel = UILabel()
     var answerLabel = UILabel()
     
+    
     // MARK: -Life Cycle
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
         setUI()
+        setAttribute()
+
     }
     
     required init?(coder: NSCoder) {
@@ -30,6 +33,8 @@ class InitialTableViewCell: UITableViewCell {
 // MARK: -UI
 extension InitialTableViewCell {
     private func setUI() {
+        let cellWidth: CGFloat = contentView.bounds.size.width / 2
+        
         [quizLabel, answerLabel].forEach {
             contentView.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
@@ -37,10 +42,15 @@ extension InitialTableViewCell {
         
         NSLayoutConstraint.activate([
             quizLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 30),
-            quizLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            quizLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            quizLabel.widthAnchor.constraint(equalToConstant: cellWidth),
             
-            answerLabel.leadingAnchor.constraint(equalTo: quizLabel.trailingAnchor, constant: 30),
-            answerLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
+            answerLabel.leadingAnchor.constraint(equalTo: quizLabel.trailingAnchor, constant: 5),
+            answerLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
+    }
+    private func setAttribute() {
+        quizLabel.font = UIFont.Pretandard(type: .Light, size: 20)
+        answerLabel.font = UIFont.Pretandard(type: .SemiBold, size: 20)
     }
 }

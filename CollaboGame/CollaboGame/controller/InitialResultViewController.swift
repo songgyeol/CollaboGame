@@ -10,39 +10,29 @@ import UIKit
 class InitialResultViewController: UIViewController {
     
     let initialQuizManager = InitialQuiz.shared
-    let resultLabel = CustomLabel(title: "", size: 25)
-    var resultArray: [String]?
-    var resultString = ""
+    var resultArray: [String] = []
+
 
     let tableView = UITableView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        displayResult()
-        print(initialQuizManager.resultArray)
-    }
-    
-    func displayResult() {
+        self.title = "정답확인"
 
-        for index in 0..<initialQuizManager.resultArray.count {
-            resultString += "\(initialQuizManager.resultArray[index].getInitialLetter()) : \(initialQuizManager.resultArray[index]) \n"
-        }
-        print(resultString)
-        resultLabel.text = resultString
-        initialQuizManager.resultArray = []
     }
+
 }
 
 extension InitialResultViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return initialQuizManager.resultArray.count
+        return resultArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: InitialTableViewCell.identifier, for: indexPath) as! InitialTableViewCell
-        cell.quizLabel.text = initialQuizManager.resultArray[indexPath.row].getInitialLetter()
-        cell.answerLabel.text = initialQuizManager.resultArray[indexPath.row]
+        cell.quizLabel.text = resultArray[indexPath.row].getInitialLetter()
+        cell.answerLabel.text = resultArray[indexPath.row]
         return cell
     }
 }
@@ -50,17 +40,14 @@ extension InitialResultViewController: UITableViewDataSource {
 //MARK: -UI
 extension InitialResultViewController {
     final private func configureUI() {
-        setAttributes()
         setTableView()
         setConstraints()
     }
-    
-    final private func setAttributes() {
-        resultLabel.numberOfLines = 0
-    }
+
 
     final private func setTableView() {
         tableView.dataSource = self
+        tableView.rowHeight = 40
         tableView.register(InitialTableViewCell.self, forCellReuseIdentifier: InitialTableViewCell.identifier)
     }
     
@@ -74,7 +61,7 @@ extension InitialResultViewController {
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
 }
