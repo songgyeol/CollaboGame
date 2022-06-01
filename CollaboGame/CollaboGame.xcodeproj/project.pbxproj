@@ -21,6 +21,7 @@
 		0C50D33C2827A6D6001BBB18 /* SceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C50D33B2827A6D6001BBB18 /* SceneViewController.swift */; };
 		0C50D344283263C7001BBB18 /* InitialQuiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C50D343283263C7001BBB18 /* InitialQuiz.swift */; };
 		0C50D346283263F3001BBB18 /* InitialResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C50D345283263F3001BBB18 /* InitialResultViewController.swift */; };
+		0C5362082847558F00BAB204 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0C5362072847558F00BAB204 /* Pretendard-Bold.otf */; };
 		0C53A3352839F9460080B38C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0C53A3342839F9460080B38C /* Alamofire */; };
 		0C53A3372839FFA30080B38C /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C53A3362839FFA30080B38C /* APIManager.swift */; };
 		0C53A339283A2AE50080B38C /* String_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C53A338283A2AE50080B38C /* String_Extension.swift */; };
@@ -42,7 +43,6 @@
 		0CF2782128473E2E00AFC330 /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF2782028473E2E00AFC330 /* MovieModel.swift */; };
 		505CFE14283A0C48001325FC /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505CFE13283A0C48001325FC /* Movie.swift */; };
 		509588A62830F18700404DFD /* NewSaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509588A52830F18700404DFD /* NewSaying.swift */; };
-		50C73A6E28475210005A96C4 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 50C73A6D28475210005A96C4 /* Pretendard-Bold.otf */; };
 		50DA72DD2827A2FA0073E706 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DA72DC2827A2FA0073E706 /* AppDelegate.swift */; };
 		50DA72DF2827A2FA0073E706 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DA72DE2827A2FA0073E706 /* SceneDelegate.swift */; };
 		50DA72E62827A2FB0073E706 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50DA72E52827A2FB0073E706 /* Assets.xcassets */; };
@@ -64,6 +64,7 @@
 		0C50D33B2827A6D6001BBB18 /* SceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneViewController.swift; sourceTree = "<group>"; };
 		0C50D343283263C7001BBB18 /* InitialQuiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialQuiz.swift; sourceTree = "<group>"; };
 		0C50D345283263F3001BBB18 /* InitialResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialResultViewController.swift; sourceTree = "<group>"; };
+		0C5362072847558F00BAB204 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
 		0C53A3362839FFA30080B38C /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		0C53A338283A2AE50080B38C /* String_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String_Extension.swift; sourceTree = "<group>"; };
 		0C6B422028366AE50080491E /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
@@ -83,7 +84,6 @@
 		0CF2782028473E2E00AFC330 /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
 		505CFE13283A0C48001325FC /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		509588A52830F18700404DFD /* NewSaying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSaying.swift; sourceTree = "<group>"; };
-		50C73A6D28475210005A96C4 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Pretendard-Bold.otf"; path = "../../../../Downloads/Pretendard-Bold.otf"; sourceTree = "<group>"; };
 		50DA72D92827A2FA0073E706 /* CollaboGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollaboGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50DA72DC2827A2FA0073E706 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50DA72DE2827A2FA0073E706 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -113,10 +113,10 @@
 				50DA72E52827A2FB0073E706 /* Assets.xcassets */,
 				0CF277F2283F976200AFC330 /* Pretendard-Black.otf */,
 				0C26EB712830C3990071E8B2 /* Pretendard-Regular.otf */,
-				50C73A6D28475210005A96C4 /* Pretendard-Bold.otf */,
 				0CF277F0283F976200AFC330 /* Pretendard-ExtraBold.otf */,
 				0CF277F3283F976200AFC330 /* Pretendard-ExtraLight.otf */,
 				0CF277EE283F976100AFC330 /* Pretendard-Light.otf */,
+				0C5362072847558F00BAB204 /* Pretendard-Bold.otf */,
 				0CF277EC283F976100AFC330 /* Pretendard-Medium.otf */,
 				0CF277EF283F976200AFC330 /* Pretendard-SemiBold.otf */,
 				0CF277ED283F976100AFC330 /* Pretendard-Thin.otf */,
@@ -282,7 +282,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CF277F5283F976200AFC330 /* Pretendard-Medium.otf in Resources */,
-				50C73A6E28475210005A96C4 /* Pretendard-Bold.otf in Resources */,
+				0C5362082847558F00BAB204 /* Pretendard-Bold.otf in Resources */,
 				0CF277F9283F976200AFC330 /* Pretendard-ExtraBold.otf in Resources */,
 				50DA72E92827A2FB0073E706 /* LaunchScreen.storyboard in Resources */,
 				0CF277F8283F976200AFC330 /* Pretendard-SemiBold.otf in Resources */,

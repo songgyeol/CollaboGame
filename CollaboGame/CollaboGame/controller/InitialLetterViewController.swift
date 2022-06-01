@@ -33,13 +33,7 @@ class InitialLetterViewController: UIViewController {
         configureUI()
         view.backgroundColor = .white
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        print(#function)
-        super.viewWillAppear(animated)
-    }
-    
-    
+
     
     @objc func update() {
         if secondRemaining < limitTime {
@@ -61,33 +55,20 @@ extension InitialLetterViewController {
         switch sender.selectedSegmentIndex {
         case 0:
             currentCategory = "과자"
+            initialQuizManager.resultArray = []
         case 1:
             currentCategory = "라면"
+            initialQuizManager.resultArray = []
         case 2:
             currentCategory = "아이스크림"
+            initialQuizManager.resultArray = []
         default:
             break
         }
     }
     
     @objc private func buttonTapped(_ sender: UIButton) {
-        //구별 필요 타이머가 이상함
-////        timer.invalidate()
-//        switch sender {
-//        case startButton:
-//            startButton.setTitle("다음 문제", for: .normal)
-//            timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(update), userInfo: nil, repeats: true)
-//            timerLabel.isHidden = true
-//            progressBar.isHidden = false
-//            quizLabel.text = getInitialLetter()
-////            timer.invalidate()
-//
-//        case rightAnswerButton:
-//            quizLabel.text = currentAnswer
-//        default:
-//            break
-//        }
-        
+
         switch sender.currentTitle {
         case "시작하기":
             startButton.setTitle("다음 문제", for: .normal)
@@ -125,9 +106,9 @@ extension InitialLetterViewController {
         let alert = UIAlertController(title: "게임 끝!", message: "결과를 확인하시겠습니까?", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "결과보기", style: .default) { [weak self] _ in
             let nextVC = InitialResultViewController()
-            nextVC.resultArray = self?.initialQuizManager.resultArray
+            self?.navigationController?.navigationItem.title = "정답확인"
             self?.navigationController?.pushViewController(nextVC, animated: true)
-//            self?.present(nextVC, animated: true)
+            nextVC.resultArray = self?.initialQuizManager.resultArray ?? [""]
             self?.startButton.setTitle("시작하기", for: .normal)
             self?.quizLabel.text = "🍒 초성게임"
             self?.secondRemaining = 0
