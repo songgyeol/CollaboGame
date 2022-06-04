@@ -17,9 +17,10 @@ class CustomLabel: UILabel {
     init(title: String, size: CGFloat = 40) {
         super.init(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
         font = UIFont.Pretandard(type: .Bold, size: size)
-        backgroundColor = CustomColor.mainColor
+        //backgroundColor = CustomColor.mainColor
         clipsToBounds = true
         layer.cornerRadius = 10
+        numberOfLines = 0
         text = title
         textAlignment = .center
         textColor = CustomColor.mainTextColor

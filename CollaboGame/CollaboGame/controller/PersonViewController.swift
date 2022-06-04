@@ -12,8 +12,9 @@ class PersonViewController: UIViewController {
     private let hintLabel = UILabel()
     private let hintButton = UIButton()
     private let mainLabel = CustomLabel(title: "문제")
-    private var quizImageView = UIImageView()
-    private let startBtn = CustomButton(title: "시작하기")
+    private var quizImageView = CustomImageView(label: "신조어")
+    private let startBtn = UIButton(type: .custom)
+    private let rightAnswerButton = UIButton(type: .custom)
     private let progressBar = CustomProgressBar()
     private let rightAnswerBtn = CustomPassButton(title: "정답확인")
 

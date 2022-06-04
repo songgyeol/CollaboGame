@@ -137,7 +137,7 @@ extension MovieViewController {
         movieImageView.layer.borderWidth = 5.0 //테두리의 두께
         movieImageView.layer.masksToBounds = true //테두리의 배경을 투명하게
         
-        mainImageView.image = UIImage(named: "모니터")
+        mainImageView.image = UIImage(named: "퀴즈배경")
         //mainImageView.contentMode = .scaleAspectFit
         
 //        playButton.setImage(UIImage(named: "시작하기"), for: .normal)

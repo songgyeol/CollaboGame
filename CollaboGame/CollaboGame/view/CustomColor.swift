@@ -24,7 +24,7 @@ struct myColor {
     //greenColor, pinkColor, redColor, shadowPink
     static let greenColor = UIColor(red: 0.31, green: 0.65, blue: 0.32, alpha: 1.00)
     static let pinkColor = UIColor(red: 1.00, green: 0.51, blue: 0.65, alpha: 1.00)
-    static let redColor = UIColor(red: 0.93, green: 0.09, blue: 0.00, alpha: 1.00)
+    static let redColor = UIColor(red: 0.88, green: 0.11, blue: 0.02, alpha: 1.00)
     static let shadowPink = UIColor(red: 0.98, green: 0.93, blue: 1.00, alpha: 1.00)
     
     //purple, deepPurple
@@ -35,5 +35,6 @@ struct myColor {
     static let deepYellow = UIColor(red: 0.88, green: 0.59, blue: 0.13, alpha: 1.00)
     //green, deepPurple, yellow
     static let green = UIColor(red: 0.19, green: 0.40, blue: 0.20, alpha: 1.00)
-    
+    static let deepBlue = UIColor(red: 0.12, green: 0.15, blue: 0.30, alpha: 1.00)
+    static let lightGreen = UIColor(red: 0.77, green: 0.86, blue: 0.57, alpha: 1.00)
 }

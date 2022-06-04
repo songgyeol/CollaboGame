@@ -25,21 +25,22 @@ class CustomCollectionViewCell: UICollectionViewCell {
     
     func setContentView() {
         contentView.layer.borderWidth = 5
-        contentView.layer.borderColor = CustomColor.darkGrayTextColor.cgColor
+        contentView.layer.borderColor = myColor.deepYellow.cgColor
         contentView.layer.masksToBounds = true
-        contentView.layer.cornerRadius = 30
+        contentView.layer.cornerRadius = contentView.bounds.size.width * 0.5
+        contentView.backgroundColor = myColor.yellow
     }
     
     func setImageView() {
         iconImageView.contentMode = .scaleAspectFit
-        iconImageView.tintColor = CustomColor.deepDarkGrayColor
+        iconImageView.tintColor = myColor.deepBlue
     }
     
     func setTitle() {
-        gameTitle.textColor = CustomColor.deepDarkGrayColor
+        gameTitle.textColor = .white
         gameTitle.font = UIFont.Pretandard(type: .Bold, size: 20)
         gameTitle.textAlignment = .center
-        subTitle.textColor = CustomColor.startBtnColor
+        subTitle.textColor = myColor.deepBlue
         subTitle.font = UIFont.Pretandard(type: .Regular, size: 18)
         subTitle.textAlignment = .center
     }
@@ -51,13 +52,13 @@ class CustomCollectionViewCell: UICollectionViewCell {
         }
         
         NSLayoutConstraint.activate([
-            iconImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 40),
+            iconImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 30),
             iconImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             iconImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             iconImageView.heightAnchor.constraint(equalToConstant: 35),
             
-            gameTitle.topAnchor.constraint(equalTo: iconImageView.bottomAnchor, constant: 20),
+            gameTitle.topAnchor.constraint(equalTo: iconImageView.bottomAnchor, constant: 10),
             gameTitle.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             gameTitle.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             gameTitle.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),

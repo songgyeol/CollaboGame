@@ -30,12 +30,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         controller.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         controller.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         controller.navigationBar.tintColor = .white
-        controller.navigationBar.backgroundColor = CustomColor.startBtnColor
+        controller.navigationBar.backgroundColor = myColor.greenColor
         
         if #available(iOS 13.0, *) {
             let navBarAppearance = UINavigationBarAppearance()
             navBarAppearance.configureWithOpaqueBackground()
-            navBarAppearance.backgroundColor = CustomColor.startBtnColor
+            navBarAppearance.backgroundColor = myColor.greenColor
             navBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont.Pretandard(type: .Bold, size: 35)]
             navBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
             

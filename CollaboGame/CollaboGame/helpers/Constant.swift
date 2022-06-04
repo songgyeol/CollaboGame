@@ -11,5 +11,6 @@ import UIKit
 public struct CVCell {
     static let spacingWitdh: CGFloat = 3
     static let cellColumns: CGFloat = 2
+    static let screenWidth: CGFloat = UIScreen.main.bounds.width * 0.7
     private init() {}
 }

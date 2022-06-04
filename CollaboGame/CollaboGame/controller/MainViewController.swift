@@ -22,13 +22,23 @@ class MainViewController: UIViewController {
     
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.isNavigationBarHidden = false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        self.navigationItem.title = "콜라보 게임"
-        logoImageView.image = UIImage(named: "콜라보 게임")
-         
+        view.backgroundColor = myColor.greenColor
+        collectionView.backgroundColor = myColor.greenColor
         
+        logoImageView.image = UIImage(named: "메인")
     }
 
 }
@@ -111,16 +121,18 @@ extension MainViewController {
         
         
         NSLayoutConstraint.activate([
-            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            
             logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -300),
-            logoImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            logoImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            logoImageView.heightAnchor.constraint(equalToConstant: 300),
+            logoImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 70),
+            logoImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            logoImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            logoImageView.heightAnchor.constraint(equalToConstant: CVCell.screenWidth),
+            
+            
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            collectionView.topAnchor.constraint(equalTo: logoImageView.bottomAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            
         ])
         
     }
