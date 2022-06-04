@@ -8,17 +8,24 @@
 import UIKit
 
 class MovieViewController: UIViewController {
-    var mainLabel = CustomLabel(title: "영화명대사", size: 30)
+    let mainImageView = UIImageView()
+    var mainLabel = CustomLabel(title: "대사로 영화 맞추기", size: 30)
     let movieImageView = UIImageView()
-    var answerButton = CustomButton(title: "시작하기")
+    var answerButton = CustomButton(title: "시작하기", size: 20)
     var qAndAText = ""
-    var movieTitle = ""
     var year = 0
+    var answerLabel = CustomLabel(title: "영화 명대사", size: 25)
     
+    
+    let playButton  = CustomButton(frame: .zero)
+
+   
+//MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        self.navigationItem.title = "그 대사 뭐니"
+        self.navigationItem.title = "그 영화 뭐니"
+        movieImageView.isHidden = true
         setUI()
     }
 //MARK: - Data
@@ -42,24 +49,33 @@ class MovieViewController: UIViewController {
     }
 }
 
-//MARK: -
+//MARK: - Selector
 extension MovieViewController {
     @objc
     func answerButton(_ sender: UIButton) {
-        
+        if sender.currentImage == UIImage(named: "시작하기") {
+            print("성공")
+            
+        }
         if sender.currentTitle == "시작하기" {
             qAndAText = MovieLine.shared.movieA.keys.randomElement() ?? ""
+            print(qAndAText)
             answerButton.setTitle("정답확인", for: .normal)
-            answerButton.setTitleColor(.yellow, for: .normal)
-            
+            answerButton.setTitleColor(UIColor(red:0.98, green:0.96, blue:0.43, alpha:1.0), for: .normal)
             mainLabel.text = MovieLine.shared.movieA[qAndAText]
+            mainLabel.backgroundColor = .clear
             movieImageView.isHidden = true
             
         } else if sender.currentTitle == "정답확인" {
+            answerLabel.textColor = UIColor(red:0.98, green:0.96, blue:0.43, alpha:1.0)
+            answerLabel.text = qAndAText
+            
+            mainLabel.backgroundColor = .clear
             mainLabel.textColor = .clear
             answerButton.setTitle("다음문제", for: .normal)
             movieImageView.isHidden = false
             year = MovieLine.shared.yearMovie[qAndAText] ?? 2000
+            
             
             APIManager.shared.requestMovie(word: qAndAText, year: year) { response in
                 switch response {
@@ -70,13 +86,18 @@ extension MovieViewController {
                     print(error.localizedDescription)
                 }
             }
-            
             answerButton.setTitleColor(CustomColor.btnTextColor, for: .normal)
         } else if sender.currentTitle == "다음문제" {
+            
+            answerLabel.textColor = CustomColor.mainTextColor
+            answerLabel.text = "영화 명대사"
+            
             qAndAText = MovieLine.shared.movieA.keys.randomElement() ?? ""
-            mainLabel.textColor = .white
+            //print(qAndAText)
+            mainLabel.backgroundColor = CustomColor.mainColor
+            mainLabel.textColor = CustomColor.mainTextColor
             answerButton.setTitle("정답확인", for: .normal)
-            answerButton.setTitleColor(.yellow, for: .normal)
+            answerButton.setTitleColor(UIColor(red:0.98, green:0.96, blue:0.43, alpha:1.0), for: .normal)
             mainLabel.text = MovieLine.shared.movieA[qAndAText]
             movieImageView.isHidden = true
             year = MovieLine.shared.yearMovie[qAndAText] ?? 2000
@@ -102,34 +123,62 @@ extension MovieViewController {
     }
     
     func setBasic() {
-        [mainLabel,answerButton, movieImageView].forEach {
+        [mainImageView, answerLabel,mainLabel,answerButton,movieImageView, playButton].forEach {
             view.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
-        answerButton.addTarget(self, action: #selector(answerButton(_:)), for: .touchUpInside)
+        playButton.addTarget(self, action: #selector(answerButton(_:)), for: .touchUpInside)
         mainLabel.numberOfLines = 0
+        answerLabel.numberOfLines = 0
+        
+        movieImageView.layer.cornerRadius = 3.0       //테두리가 라운드가 된다.
+        //        movieImageView.layer.masksToBounds = true
+        movieImageView.layer.borderColor = UIColor(red:0.98, green:0.96, blue:0.43, alpha:1.0).cgColor
+        movieImageView.layer.borderWidth = 5.0 //테두리의 두께
+        movieImageView.layer.masksToBounds = true //테두리의 배경을 투명하게
+        
+        mainImageView.image = UIImage(named: "모니터")
+        //mainImageView.contentMode = .scaleAspectFit
+        
+//        playButton.setImage(UIImage(named: "시작하기"), for: .normal)
+        
+        
     }
-    
-//MARK: - SetLayout
+
     func setLayout() {
         
         NSLayoutConstraint.activate([
             movieImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            movieImageView.topAnchor.constraint(equalTo: mainLabel.topAnchor, constant: 30),
-            movieImageView.leadingAnchor.constraint(equalTo: mainLabel.leadingAnchor, constant: 50),
-            movieImageView.trailingAnchor.constraint(equalTo: mainLabel.trailingAnchor, constant: -50),
-            movieImageView.bottomAnchor.constraint(equalTo: mainLabel.bottomAnchor, constant: -30),
+            movieImageView.topAnchor.constraint(equalTo: mainImageView.topAnchor, constant: 20),
+            movieImageView.leadingAnchor.constraint(equalTo: mainImageView.leadingAnchor, constant: 60),
+            movieImageView.trailingAnchor.constraint(equalTo: mainImageView.trailingAnchor, constant: -60),
+            movieImageView.bottomAnchor.constraint(equalTo: mainImageView.bottomAnchor, constant: -300),
+            
+            answerLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            answerLabel.topAnchor.constraint(equalTo: mainImageView.bottomAnchor, constant: -60),
+            answerLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 50),
+            answerLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -50),
+            answerLabel.heightAnchor.constraint(equalToConstant: 70),
+
+            
             
             mainLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            mainLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 70),
+            mainLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
             mainLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
             mainLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
             mainLabel.heightAnchor.constraint(equalToConstant: 300),
             
-            answerButton.topAnchor.constraint(equalTo: mainLabel.bottomAnchor, constant: 50),
-            answerButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            answerButton.heightAnchor.constraint(equalToConstant: 70),
-            answerButton.widthAnchor.constraint(equalToConstant: 270),
+            
+            mainImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            mainImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
+            mainImageView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
+            mainImageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
+            mainImageView.heightAnchor.constraint(equalToConstant: 600),
+            
+            playButton.topAnchor.constraint(equalTo: mainImageView.bottomAnchor, constant: 50),
+            playButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            playButton.heightAnchor.constraint(equalToConstant: 70),
+            playButton.widthAnchor.constraint(equalToConstant: 270),
         ])
     }
     

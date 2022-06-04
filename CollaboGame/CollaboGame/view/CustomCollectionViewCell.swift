@@ -24,7 +24,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
     }
     
     func setContentView() {
-        contentView.layer.borderWidth = 1
+        contentView.layer.borderWidth = 5
         contentView.layer.borderColor = CustomColor.darkGrayTextColor.cgColor
         contentView.layer.masksToBounds = true
         contentView.layer.cornerRadius = 30

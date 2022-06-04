@@ -10,12 +10,14 @@ import UIKit
 class NewSayingViewController: UIViewController {
     
     var newSayingView = UIView()
-    var newSayingLabel = CustomLabel(title: "신조어", size: 30)
-    var answerButton = CustomButton(title: "시작하기")
+    var titleLabel = CustomLabel(title: "신조어", size: 25)
+    var newSayingLabel = CustomLabel(title: "신조어 맞추기", size: 30)
+    var answerButton = CustomButton(title: "시작하기", size: 20)
     var qAndAText = ""
     var unSelected = ""
     let qaTitle = ["문제", "정답"]
-    
+
+//MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -24,7 +26,7 @@ class NewSayingViewController: UIViewController {
     }
 }
 
-//MARK: - Button Tapped
+//MARK: - Selector
 extension NewSayingViewController {
     
     @objc
@@ -34,10 +36,13 @@ extension NewSayingViewController {
             answerButton.setTitle("정답확인", for: .normal)
             answerButton.setTitleColor(.yellow, for: .normal)
             qAndAText = NewSaying.shared.newSayingQ["\(qaTitle[0])"]?.randomElement() ?? ""
+            print(qAndAText)
             newSayingLabel.text = qAndAText
             newSayingView.isHidden = true
         } else if sender.currentTitle == "정답확인" {
-            newSayingLabel.textColor = .yellow
+            titleLabel.text = qAndAText
+            titleLabel.textColor = UIColor(red:0.98, green:0.96, blue:0.43, alpha:1.0)
+            newSayingLabel.textColor = UIColor(red:0.98, green:0.96, blue:0.43, alpha:1.0)
             answerButton.setTitle("다음문제", for: .normal)
             
             let selected =  NewSaying.shared.newSayingA[qAndAText] ?? ""
@@ -46,10 +51,12 @@ extension NewSayingViewController {
             
             answerButton.setTitleColor(CustomColor.btnTextColor, for: .normal)
         } else if sender.currentTitle == "다음문제" {
-            newSayingLabel.textColor = .white
+            titleLabel.text = "신조어"
+            titleLabel.textColor = CustomColor.mainTextColor
+            newSayingLabel.textColor = CustomColor.mainTextColor
             answerButton.setTitle("정답확인", for: .normal)
             qAndAText = NewSaying.shared.newSayingQ["\(qaTitle[0])"]?.randomElement() ?? ""
-            answerButton.setTitleColor(.yellow, for: .normal)
+            answerButton.setTitleColor(UIColor(red:0.98, green:0.96, blue:0.43, alpha:1.0), for: .normal)
             newSayingLabel.text = qAndAText
             newSayingView.isHidden = true
         }
@@ -60,7 +67,7 @@ extension NewSayingViewController {
     
     
 }
-//MARK: - Configure
+//MARK: - UI
 extension NewSayingViewController {
     func setUI() {
         setBasic()
@@ -68,22 +75,26 @@ extension NewSayingViewController {
     }
     
     func setBasic() {
-        [newSayingLabel,answerButton].forEach {
+        [titleLabel,newSayingLabel,answerButton].forEach {
             view.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         answerButton.addTarget(self, action: #selector(answerButton(_:)), for: .touchUpInside)
-        
         newSayingLabel.numberOfLines = 0
     }
-    
-    //MARK: - SetLayout
+ 
     func setLayout() {
         
         NSLayoutConstraint.activate([
             
+            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 60),
+            titleLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 50),
+            titleLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -50),
+            titleLabel.heightAnchor.constraint(equalToConstant: 80),
+            
             newSayingLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            newSayingLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 70),
+            newSayingLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 150),
             newSayingLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
             newSayingLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
             newSayingLabel.heightAnchor.constraint(equalToConstant: 300),

@@ -52,7 +52,7 @@ extension PersonViewController {
         quizImageView.backgroundColor = CustomColor.mainColor
         quizImageView.layer.cornerRadius = 20
         quizImageView.clipsToBounds = true
-        quizImageView.contentMode = .scaleAspectFit
+        quizImageView.contentMode = .scaleAspectFill
         
         [hintButton].forEach {
             $0.tintColor = CustomColor.startBtnColor

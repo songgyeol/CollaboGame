@@ -11,7 +11,6 @@ import UIKit
 //face.dashed.fill, bold.underline, brain.head.profile, film
 class MainViewController: UIViewController {
     
-    //let gameTitle = ["그 초성", "그 사자성어", "그 신조어","그 사람", "그 영화", "그 장면"]
     let model = [
         Model(gameTitle: "그 사람 누구니", imageName: "person.fill.questionmark", subTitle: "인물게임"),
         Model(gameTitle: "그 단어 뭐니", imageName: "bold.underline", subTitle: "초성게임"),
@@ -19,12 +18,17 @@ class MainViewController: UIViewController {
         Model(gameTitle: "그 영화 뭐니", imageName: "film", subTitle: "영화명대사게임"),
     ]
     
+    var logoImageView = UIImageView()
+    
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        self.navigationItem.title = "나 게임 좋아하네"
+        self.navigationItem.title = "콜라보 게임"
+        logoImageView.image = UIImage(named: "콜라보 게임")
+         
+        
     }
 
 }
@@ -85,8 +89,8 @@ extension MainViewController {
     final private func configureUI() {
         configureCollectionView()
         setConstraints()
+        
     }
-    
 
     final private func configureCollectionView() {
         let layout = UICollectionViewFlowLayout()
@@ -99,16 +103,24 @@ extension MainViewController {
 
     
     final private func setConstraints() {
-        [collectionView].forEach {
+        [collectionView, logoImageView].forEach {
             view.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
-    
+        
+        
+        
         NSLayoutConstraint.activate([
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.topAnchor.constraint(equalTo: view.topAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -300),
+            logoImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            logoImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            logoImageView.heightAnchor.constraint(equalToConstant: 300),
         ])
         
     }
