@@ -52,7 +52,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
         }
         
         NSLayoutConstraint.activate([
-            iconImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 30),
+            iconImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 35),
             iconImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             iconImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),

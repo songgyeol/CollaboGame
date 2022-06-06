@@ -14,3 +14,10 @@ public struct CVCell {
     static let screenWidth: CGFloat = UIScreen.main.bounds.width * 0.7
     private init() {}
 }
+
+public struct ButtonImage {
+    static let startImage = UIImage(named: "시작하기_초록")
+    static let nextQuestionImage = UIImage(named: "다음문제_초록")
+    static let answerImage = UIImage(named: "정답확인_노랑")
+    static let hintImage = UIImage(named: "힌트버튼")
+}

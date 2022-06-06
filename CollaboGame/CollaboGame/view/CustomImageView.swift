@@ -22,8 +22,15 @@ class CustomImageView: UIImageView {
     func setLabel(title: String) {
         self.addSubview(quizTitle)
         quizTitle.translatesAutoresizingMaskIntoConstraints = false
-        quizTitle.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        quizTitle.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        
+        NSLayoutConstraint.activate([
+            quizTitle.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            quizTitle.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            quizTitle.topAnchor.constraint(equalTo: self.topAnchor, constant: 30),
+            quizTitle.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 30),
+            quizTitle.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -30),
+            quizTitle.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -30),
+        ])
         quizTitle.text = title
     }
     

@@ -10,13 +10,15 @@ import UIKit
 class PersonViewController: UIViewController {
     
     private let hintLabel = UILabel()
-    private let hintButton = UIButton()
-    private let mainLabel = CustomLabel(title: "문제")
-    private var quizImageView = CustomImageView(label: "신조어")
-    private let startBtn = UIButton(type: .custom)
+    private let hintButton = UIButton(type: .custom)
+    
+    
+    private var mainImageView = CustomImageView(label: "인물 맞추기")
+    private let startButton = UIButton(type: .custom)
     private let rightAnswerButton = UIButton(type: .custom)
+    private let timerLabel = UILabel()
     private let progressBar = CustomProgressBar()
-    private let rightAnswerBtn = CustomPassButton(title: "정답확인")
+    //private let rightAnswerBtn = CustomPassButton(title: "정답확인")
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +26,6 @@ class PersonViewController: UIViewController {
         view.backgroundColor = UIColor.white
         configureUI()
     }
-
 }
 
 extension PersonViewController {
@@ -33,10 +34,20 @@ extension PersonViewController {
     }
     
     @objc func startBtnTapped(_ sender: UIButton) {
-        sender.setTitle("다음 문제", for: .normal)
+        sender.setImage(ButtonImage.nextQuestionImage, for: .normal)
         Person.shared.getRandomPerson()
-        quizImageView.image = UIImage(named: Person.shared.randomPerson)
+        mainImageView.image = UIImage(named: Person.shared.randomPerson)
+        mainImageView.layer.borderWidth = 2
+        
         hintLabel.text = "힌트가 필요할 때는 ➡️"
+        mainImageView.quizTitle.text = ""
+        timerLabel.isHidden = true
+        progressBar.isHidden = false
+    }
+    
+    @objc func answerBtnTapped(_ sender: UIButton) {
+        mainImageView.image = UIImage(named: "메인배경")
+        mainImageView.quizTitle.text = Person.shared.randomPerson
     }
     
 }
@@ -50,77 +61,78 @@ extension PersonViewController {
     }
     
     final private func setAttributes() {
-        quizImageView.backgroundColor = CustomColor.mainColor
-        quizImageView.layer.cornerRadius = 20
-        quizImageView.clipsToBounds = true
-        quizImageView.contentMode = .scaleAspectFill
-        
-        [hintButton].forEach {
-            $0.tintColor = CustomColor.startBtnColor
-            $0.layer.cornerRadius = 20
-            $0.layer.borderWidth = 2
-            $0.layer.borderColor = CustomColor.startBtnColor.cgColor
-//            $0.imageView?.contentMode = .scaleAspectFit
-//            $0.imageEdgeInsets = .init(top: 10, left: 0, bottom: 10, right: 0)
-            hintButton.setTitle("힌트", for: .normal)
-            hintButton.setTitleColor(CustomColor.btnTextColor, for: .normal)
-        }
         [hintLabel].forEach {
             $0.text = ""
             $0.font = UIFont.Pretandard(type: .Light, size: 20)
             $0.textAlignment = .center
         }
         
-        
+        progressBar.isHidden = true
+        timerLabel.text = "제한 시간: 30초"
+        timerLabel.textColor = .black
+        timerLabel.textAlignment = .center
+        hintButton.setImage(ButtonImage.hintImage, for: .normal)
+        startButton.setImage(ButtonImage.startImage, for: .normal)
+        rightAnswerButton.setImage(ButtonImage.answerImage, for: .normal)
 
     }
     final private func addTarget() {
-        startBtn.addTarget(self, action: #selector(startBtnTapped(_:)), for: .touchUpInside)
+        startButton.addTarget(self, action: #selector(startBtnTapped(_:)), for: .touchUpInside)
         hintButton.addTarget(self, action: #selector(hintButtonTapped(_:)), for: .touchUpInside)
+        rightAnswerButton.addTarget(self, action: #selector(answerBtnTapped(_:)), for: .touchUpInside)
     }
 
     final private func setConstraints() {
-        let stackView = UIStackView(arrangedSubviews: [hintLabel, hintButton])
-        stackView.axis = .horizontal
-        stackView.spacing = 5
+        let hintStack = UIStackView(arrangedSubviews: [hintLabel, hintButton])
+        hintStack.axis = .horizontal
+        hintStack.spacing = 5
         
-        [stackView, startBtn, rightAnswerBtn, progressBar, quizImageView].forEach {
+        let buttonStack = UIStackView(arrangedSubviews: [startButton, rightAnswerButton])
+        buttonStack.axis = .vertical
+        buttonStack.distribution = .fillEqually
+        buttonStack.spacing = 10
+        
+        
+        [hintStack, mainImageView, timerLabel, progressBar, buttonStack].forEach {
             view.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
-            stackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-            stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
-            stackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
-            stackView.heightAnchor.constraint(equalToConstant: 50),
+            hintStack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            hintStack.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            hintStack.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 50),
+            hintStack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -50),
+            hintStack.heightAnchor.constraint(equalToConstant: 50),
             
             hintButton.widthAnchor.constraint(equalToConstant: 80),
             
-            quizImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            quizImageView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 30),
-            quizImageView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
-            quizImageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
-            quizImageView.heightAnchor.constraint(equalToConstant: 300),
+            mainImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            mainImageView.topAnchor.constraint(equalTo: hintStack.bottomAnchor, constant: 10),
+            mainImageView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
+            mainImageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
+            mainImageView.heightAnchor.constraint(equalToConstant: 350),
             
-            progressBar.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            progressBar.topAnchor.constraint(equalTo: quizImageView.bottomAnchor, constant: 30),
-            progressBar.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
-            progressBar.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
-//            progressBar.heightAnchor.constraint(equalTo: mainLabel.heightAnchor),
+            timerLabel.topAnchor.constraint(equalTo: mainImageView.bottomAnchor, constant: 20),
+            timerLabel.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            timerLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
+            timerLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
+            timerLabel.heightAnchor.constraint(equalToConstant: 20),
             
-            startBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            startBtn.topAnchor.constraint(equalTo: progressBar.bottomAnchor, constant: 30),
-            startBtn.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 70),
-            startBtn.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -70),
-            startBtn.heightAnchor.constraint(equalToConstant: 50),
+            progressBar.topAnchor.constraint(equalTo: timerLabel.topAnchor),
+            progressBar.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            progressBar.leadingAnchor.constraint(equalTo: timerLabel.leadingAnchor),
+            progressBar.trailingAnchor.constraint(equalTo: timerLabel.trailingAnchor),
+
+            buttonStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            buttonStack.topAnchor.constraint(equalTo: timerLabel.bottomAnchor, constant: 15),
+            buttonStack.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 70),
+            buttonStack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -70),
+            buttonStack.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+//            startButton.heightAnchor.constraint(equalToConstant: 70),
+//            rightAnswerButton.heightAnchor.constraint(equalToConstant: 70)
             
-            rightAnswerBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            rightAnswerBtn.topAnchor.constraint(equalTo: startBtn.bottomAnchor, constant: 20),
-            rightAnswerBtn.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 70),
-            rightAnswerBtn.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -70),
-            rightAnswerBtn.heightAnchor.constraint(equalTo: startBtn.heightAnchor),
+            
         ])
     }
 }

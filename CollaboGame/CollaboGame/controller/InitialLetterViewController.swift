@@ -26,9 +26,9 @@ class InitialLetterViewController: UIViewController {
     private var currentCategory = "과자"
     private var currentAnswer = ""
 
-    private let startImage = UIImage(named: "시작하기_초록")
-    private let nextQuestionImage = UIImage(named: "다음문제_초록")
-    private let answerImage = UIImage(named: "정답확인_노랑")
+//    private let startImage = UIImage(named: "시작하기_초록")
+//    private let nextQuestionImage = UIImage(named: "다음문제_초록")
+//    private let answerImage = UIImage(named: "정답확인_노랑")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,23 +73,21 @@ extension InitialLetterViewController {
     @objc private func buttonTapped(_ sender: UIButton) {
 
         switch sender.currentImage {
-        case startImage:
-            startButton.setImage(nextQuestionImage, for: .normal)
+        case ButtonImage.startImage:
+            startButton.setImage(ButtonImage.nextQuestionImage, for: .normal)
             timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(update), userInfo: nil, repeats: true)
             timerLabel.isHidden = true
             progressBar.isHidden = false
             mainImageView.quizTitle.text = getInitialLetter()
-        case nextQuestionImage:
+        case ButtonImage.nextQuestionImage:
             mainImageView.quizTitle.text = getInitialLetter()
             //timer.invalidate()
-        case answerImage:
+        case ButtonImage.answerImage:
             mainImageView.quizTitle.text = currentAnswer
             
         default:
             break
-            
         }
-        
     }
 
     func getInitialLetter() -> String {
@@ -102,9 +100,7 @@ extension InitialLetterViewController {
         print(initialQuizManager.resultArray)
         return randomWord.getInitialLetter()
     }
-    
-    
-    
+
     func showAlert() {
         print("alert")
         let alert = UIAlertController(title: "게임 끝!", message: "결과를 확인하시겠습니까?", preferredStyle: .alert)
@@ -113,7 +109,7 @@ extension InitialLetterViewController {
             self?.navigationController?.navigationItem.title = "정답확인"
             self?.navigationController?.pushViewController(nextVC, animated: true)
             nextVC.resultArray = self?.initialQuizManager.resultArray ?? [""]
-            self?.startButton.setImage(self?.startImage, for: .normal)
+            self?.startButton.setImage(ButtonImage.startImage, for: .normal)
             self?.mainImageView.quizTitle.text = "🍒 초성게임"
             self?.secondRemaining = 0
             self?.progressBar.progress = 0.0
@@ -126,7 +122,7 @@ extension InitialLetterViewController {
             self?.timer.invalidate()
             self?.mainImageView.quizTitle.text = "🍒 초성게임"
             self?.secondRemaining = 0
-            self?.startButton.setImage(self?.startImage, for: .normal)
+            self?.startButton.setImage(ButtonImage.startImage, for: .normal)
             self?.progressBar.progress = 0.0
             self?.currentAnswer = "🍒 초성게임"
             self?.progressBar.isHidden = true
@@ -155,12 +151,11 @@ extension InitialLetterViewController {
             $0.selectedSegmentIndex = 0
         }
 
-        
         [timerLabel].forEach {
             $0.text = "제한 시간 : 30초"
             $0.textAlignment = .center
             $0.textColor = .black
-            $0.font = UIFont.systemFont(ofSize: 20)
+            
         }
 
         [progressBar].forEach {
@@ -181,17 +176,13 @@ extension InitialLetterViewController {
 
     
     final private func setConstraints() {
-
-        
         [categoryButton, mainImageView, timerLabel, startButton, rightAnswerButton, progressBar].forEach {
             view.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         
-        
-        
         NSLayoutConstraint.activate([
-            categoryButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
+            categoryButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             categoryButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             categoryButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
             categoryButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
@@ -202,15 +193,15 @@ extension InitialLetterViewController {
             mainImageView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             mainImageView.heightAnchor.constraint(equalToConstant: 320),
 
-            timerLabel.topAnchor.constraint(equalTo: mainImageView.bottomAnchor, constant: 30),
+            timerLabel.topAnchor.constraint(equalTo: mainImageView.bottomAnchor, constant: 20),
             timerLabel.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             
-            progressBar.topAnchor.constraint(equalTo: mainImageView.bottomAnchor, constant: 30),
+            progressBar.topAnchor.constraint(equalTo: mainImageView.bottomAnchor, constant: 20),
             progressBar.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             progressBar.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
             progressBar.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
             
-            startButton.topAnchor.constraint(equalTo: mainImageView.bottomAnchor, constant: 80),
+            startButton.topAnchor.constraint(equalTo: timerLabel.bottomAnchor, constant: 20),
             startButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),        startButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 70),
             startButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -70),
             startButton.heightAnchor.constraint(equalToConstant: 70),
